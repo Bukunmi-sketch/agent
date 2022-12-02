@@ -82,7 +82,7 @@ include('../Controllers/signupcontroller.php');
 
              <div class="others-field">
                        <label for="Phone">Mobile No</label>
-				           <input type="tel" id="phone" name="phone" placeholder="phone" > 
+				           <input type="number" id="phone" name="phone" placeholder="phone" > 
 				     </div><br>
 					        
 			         
@@ -119,6 +119,7 @@ include('../Controllers/signupcontroller.php');
 
 </body>
 <script src="../Resources/js/loader.js"></script>  
+<script src="../Resources/js/validatephone.js"></script>  
 <script type="text/javascript">
 
 //const form=document.querySelector("");
