@@ -95,29 +95,38 @@
 
       
       $reasons=$authInstance->validate(ucfirst($_POST['textbio'])); 
-    //  $reasons=$authInstance->escapeString($reasons);
-    //  $imagename=$_FILES['dpic'];
+   
       $dp=$_FILES['product_image']["name"];
-      $dpsize=$_FILES['dpic']['size'];
-      $dptemp=$_FILES['dpic']['tmp_name'];
-  
-      //$dir="images/";
+      $dpsize=$_FILES['product_image']['size'];
+      $dptemp=$_FILES['product_image']['tmp_name'];
+
       $dir="../Images/signup_img/dp--";
       $dirfile=$dir.basename($dp);
+
+      $id_img=$_FILES['identity_image']["name"];
+      $id_img_size=$_FILES['identity_image']['size'];
+      $id_img_temp=$_FILES['identity_image']['tmp_name'];
+
+      $dir="../Images/identity_img/dp--";
+      $dirfile=$dir.basename($dp);
       
-      $userid=$_POST["userid"];
+    //  $userid=$_POST["userid"];
  
      
        
        // empty($dp) ? $dp= $dp 
   
   
-      if(!empty($dp) && !empty($reasons) && !empty($reasons)){
+      if(!empty($dp) && !empty($id_img) && !empty($reasons)){
   
-                if($imgInstance->imgextension($dp)){
-                      if($imgInstance->largeImage($dpsize)){
+                if( $imgInstance->imgextension($dp) ){
+                    if($imgInstance->imgextension($id_img)){
+
+                       if($imgInstance->largeImage($dpsize)){
+                        if($imgInstance->largeImage($id_img_size)){
+
                           if($imgInstance->moveImage($dptemp, $dirfile)){
-                              if($imgInstance->updateImage( $dp, $reasons, $userid)){
+                             
 
 
                                     //function to register the user
@@ -148,17 +157,20 @@
                                    }else{
                                        echo "an error occurred while attempting to sign up";
                                    }
-
-
-                             }else{
-                                 echo "an error occurred while uploading the image";
-                             }
                           }else{
                               echo "file failed to move";
                           }
+                        }else{
+                            echo "identity image size must not be larger than 900kb";
+                        } 
+                        
                       }else{
                           echo "image size must not be larger than 900kb";
-                      }     
+                      } 
+                      
+                    }else{
+                        echo 'your identity file is not an image';
+                      }      
                }else{
                   echo 'file is not an image';
                 } 
