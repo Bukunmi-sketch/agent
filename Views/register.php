@@ -143,7 +143,7 @@ include('../Controllers/signupcontroller.php');
     	      	
     	     	if(data ==="success"){
     	     	//    error.textContent=data;
-    				location.href="dashboard.php";
+    				location.href="register.php?step=2";
    				 }
  	  			 else{
    					 error.textContent=data;
