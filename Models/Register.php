@@ -24,7 +24,7 @@ require '../Includes/db.inc.php';
                         ":lastname" =>$lastname,
                         ":referralcodes" =>$referral,
                         ":email" =>$email,
-                        ":status" => 'online',
+                        ":status" => 'pending',
                         ":password" => $user_hashed_password,
                         ":date" =>$date
                    ]);

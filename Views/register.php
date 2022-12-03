@@ -62,7 +62,7 @@ include('../Controllers/signupcontroller.php');
                             <label for="identiyCard">Upload a identity card (it could be your driver's license,voter's card e.t.c) </label>
                             <div id="uploadb">
                                 <img src="" onClick="triggerb()" aid="profileDisplayb">
-                                <input type="file" name="identity_image" onchange="displayImageb(this)" id="captureb" style="display:none;">
+                                <input type="file" name="identity_image" onchange="displayImageb(this)" id="captureb" >
                                 <i class="fa fa-camera" id="camerab"></i>
                             </div>
                         </div>
