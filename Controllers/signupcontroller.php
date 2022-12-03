@@ -5,13 +5,14 @@
   include '../Models/Login.php';  
   include '../Models/Register.php';  
   include '../Models/Auth.php';  
+  include '../Models/Uploadimg.php'; 
   
 
       // create of object of the user classs
     $authInstance= new Auth($conn);
     $loginInstance= new Login($conn);
     $registerInstance= new Register($conn);
-    //$imgInstance= new Uploadimg($conn);
+    $imgInstance= new Uploadimg($conn);
  
    
 
@@ -96,18 +97,18 @@
       
       $reasons=$authInstance->validate(ucfirst($_POST['reasons'])); 
    
-      $dp=$_FILES['product_image']["name"];
-      $dpsize=$_FILES['product_image']['size'];
-      $dptemp=$_FILES['product_image']['tmp_name'];
+      $dp=$_FILES['user_image']["name"];
+      $dpsize=$_FILES['user_image']['size'];
+      $dptemp=$_FILES['user_image']['tmp_name'];
 
-      $dir="../Images/signup_img/";
+      $dir="../Images/signup-img/";
       $dirfile=$dir.basename($dp);
 
       $id_img=$_FILES['identity_image']["name"];
       $id_img_size=$_FILES['identity_image']['size'];
       $id_img_temp=$_FILES['identity_image']['tmp_name'];
 
-      $id_dir="../Images/identity_img/";
+      $id_dir="../Images/identity-img/";
       $id_dirfile=$dir.basename($id_img);
       
     //  $userid=$_POST["userid"];
@@ -129,8 +130,8 @@
                             if($imgInstance->moveImage($id_img_temp, $id_dirfile)){
                              
                                     //function to register the user
-                                    if($registerInstance->register($firstname, $lastname, $email, $referral, $password, $date)){
-                                        if($data=$registerInstance->fectchRegistedDetails($email)){
+                                    if($registerInstance->register($firstname, $lastname, $email,$id_img, $dp, $referral, $reasons, $state, $password, $date)){
+                                        if($data=$registerInstance->fetchRegistedDetails($email)){
                                               //define session if login was succesful with returned user data
                                               session_start();
                                               $_SESSION['email']=$data['email'];

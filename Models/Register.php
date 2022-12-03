@@ -12,16 +12,20 @@ require '../Includes/db.inc.php';
         }
 
         //register new users
-        public function register($firstname, $lastname,  $email, $referral, $password, $date){  
+        public function register($firstname, $lastname,  $email, $identity_pic, $display_pic, $referral, $reason, $state, $password, $date){  
                try{
                    //hash the password;
                    $user_hashed_password = password_hash($password, PASSWORD_DEFAULT );
    
-                   $sql="INSERT INTO agents(firstname,lastname, email, referralcodes, Status, Password, reg_date)VALUES   (:firstname, :lastname, :email, :referralcodes, :status, :password, :date)";
+                   $sql="INSERT INTO agents(firstname,lastname, email, identity_pic, display_pic, referralcodes, reason, Status, state, Password, reg_date)VALUES   (:firstname, :lastname, :email, :identity_pic, :display_pic, :referralcodes, :reason, :status, :state, :password, :date)";
                    $stmt= $this->db->prepare($sql);
                    $result=  $stmt->execute([
                         ":firstname"=>$firstname,
                         ":lastname" =>$lastname,
+                        ":identity_pic" =>$identity_pic,
+                        ":display_pic" =>$display_pic,
+                        ":reason" =>$reason,
+                        ":state" =>$state,
                         ":referralcodes" =>$referral,
                         ":email" =>$email,
                         ":status" => 'pending',
@@ -71,7 +75,7 @@ public function RegisterCheckemail($email){
 
 
 
-    public function fectchRegistedDetails($email){
+    public function fetchRegistedDetails($email){
       try{
          
            $sql="SELECT * FROM agents WHERE email =:email";

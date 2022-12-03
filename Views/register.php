@@ -55,7 +55,7 @@ include('../Controllers/signupcontroller.php');
                             <label for="passport">Upload your passport</label>
                             <div id="upload">
                                 <img src="" onClick="trigger()" id="profileDisplay">
-                                <input type="file" name="product_image" onchange="displayImage(this)" id="capture" style="display:none">
+                                <input type="file" name="user_image" onchange="displayImage(this)" id="capture" style="display:none">
                                 <i class="fa fa-camera" id="camera"></i>
                             </div> <br>
 

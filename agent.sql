@@ -43,8 +43,9 @@ CREATE TABLE IF NOT EXISTS `agent_password_reset` (
 
   ALTER TABLE `agents`
 
-  ADD `display_pic`  blob NOT NULL AFTER `email`,
-  ADD `identity_pic`  blob NOT NULL AFTER `lastname` ;
+ -- ADD `display_pic`  blob NOT NULL AFTER `email`,
+ -- ADD `identity_pic`  blob NOT NULL AFTER `lastname` ;
+  ADD `reason` VARCHAR(255) NOT NULL AFTER `referralcodes`;
 -- CHANGE `referralcodes` `referralcodes` varchar(255);
 -- ALTER TABLE `reports`
 -- ADD `notify_status` varchar(255) NOT NULL;

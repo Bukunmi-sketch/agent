@@ -232,7 +232,7 @@ textarea:hover {
   position: absolute;
   margin: 50px 0 0 -20px;
   font-size: 2em;
- 
+  
 }
 
 
@@ -240,6 +240,7 @@ textarea:hover {
   margin: 50px 0 0 -20px;
   font-size: 2em;
   border:1px solid red;
+  display: none;
 }
 
 
