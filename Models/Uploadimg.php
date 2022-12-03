@@ -47,7 +47,6 @@ public function moveImage($imgtmp, $dirfile){
  }
  
 }
- 
 
 }
 

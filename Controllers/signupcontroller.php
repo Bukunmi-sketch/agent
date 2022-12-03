@@ -94,10 +94,10 @@
    }elseif($type=="second_reg"){
 
       
-      $biotext=$authInstance->validate(ucfirst($_POST['textbio'])); 
-    //  $biotext=$authInstance->escapeString($biotext);
+      $reasons=$authInstance->validate(ucfirst($_POST['textbio'])); 
+    //  $reasons=$authInstance->escapeString($reasons);
     //  $imagename=$_FILES['dpic'];
-      $dp=$_FILES['dpic']["name"];
+      $dp=$_FILES['product_image']["name"];
       $dpsize=$_FILES['dpic']['size'];
       $dptemp=$_FILES['dpic']['tmp_name'];
   
@@ -112,12 +112,12 @@
        // empty($dp) ? $dp= $dp 
   
   
-      if(!empty($dp) && !empty($biotext)){
+      if(!empty($dp) && !empty($reasons) && !empty($reasons)){
   
                 if($imgInstance->imgextension($dp)){
                       if($imgInstance->largeImage($dpsize)){
                           if($imgInstance->moveImage($dptemp, $dirfile)){
-                              if($imgInstance->updateImage( $dp, $biotext, $userid)){
+                              if($imgInstance->updateImage( $dp, $reasons, $userid)){
 
 
                                     //function to register the user
@@ -162,129 +162,17 @@
                }else{
                   echo 'file is not an image';
                 } 
-      }else{
-         if(empty($dp) && !empty($biotext)){
-             $dp='null.png';
-             if($imgInstance->updateImage($dp, $biotext, $userid)){
-                 echo "success";
-            }else{
-                echo "an error occurred while uploading the image";
-            }
-         }else{
-             echo "your bio description is required";
-         }
+      }else {
+          echo 'all entries are required to be filled';
       }
+      
                       
-   }elseif($type=="third_reg"){
-
-      
-       $username=$authInstance->validate(ucfirst($_POST['username']));
-       $country=$authInstance->validate(ucfirst($_POST['country']));
-       $userid=$_POST["userid"];
-      
-       if(!empty($username) && !empty($country)){
-        if($authInstance->validLetters($username)){    
-            if($registerInstance->RegisterCheckusername($username)){
-                if($registerInstance->registerUsername($username,$userid,$country)){
-                     echo "success";
-                }else{
-                    echo "an error occured ";
-                }
-            }else{
-                echo "username has been taken";
-            }
-        }else{
-            echo "only valid letters are allowed in username";
-        }          
-       }else{
-           echo "kindly flll all textboxes";
-       }    
-  
-  
-  }elseif($type=="fourth_reg"){
-       $interest=$authInstance->validate(ucfirst($_POST['interest'] ?? ''));
-       $website=$authInstance->validate($_POST['website']);
-       $userid=$_POST["userid"];
-   
-       if(!empty($interest) && !empty($website)){
-        if (preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-            if($registerInstance->interestAndWeb($interest,$userid,$website)){
-                echo "success";
-           }else{
-               echo "an error occured ";
-           }  
-        }else{
-          echo "Invalid URL";
-        }  
-       }else{
-         if(!empty($interest) && empty($website)){ 
-            if($registerInstance->interestAndWeb($interest,$userid,$website)){
-                echo "success";
-            }else{
-               echo "an error occured ";
-            }
-         }else{
-             echo "select your interest";
-         }          
-       }    
-
-  }elseif($type=="fifth_reg"){
-
-   $biotext=$authInstance->validate(ucfirst($_POST['textbio'])); 
-   //  $biotext=$authInstance->escapeString($biotext);
-   //  $imagename=$_FILES['dpic'];
-     $dp=$_FILES['dpic']["name"];
-     $dpsize=$_FILES['dpic']['size'];
-     $dptemp=$_FILES['dpic']['tmp_name'];
- 
-     //$dir="images/";
-     $dir="../Images/signup_img/dp--";
-     $dirfile=$dir.basename($dp);
-     
-     $userid=$_POST["userid"];
-
-    
-      
-      // empty($dp) ? $dp= $dp 
- 
- 
-     if(!empty($dp) && !empty($biotext)){
- 
-               if($imgInstance->imgextension($dp)){
-                     if($imgInstance->largeImage($dpsize)){
-                         if($imgInstance->moveImage($dptemp, $dirfile)){
-                             if($imgInstance->updateImage( $dp, $biotext, $userid)){
-                                 echo "success";
-                            }else{
-                                echo "an error occurred while uploading the image";
-                            }
-                         }else{
-                             echo "file failed to move";
-                         }
-                     }else{
-                         echo "image size must not be larger than 900kb";
-                     }     
-              }else{
-                 echo 'file is not an image';
-               } 
-     }else{
-        if(empty($dp) && !empty($biotext)){
-            $dp='null.png';
-            if($imgInstance->updateImage($dp, $biotext, $userid)){
-                echo "success";
-           }else{
-               echo "an error occurred while uploading the image";
-           }
-        }else{
-            echo "your bio description is required";
-        }
-     }
- 
+   }
 
 
   }
    
-}
+
 
 
 
