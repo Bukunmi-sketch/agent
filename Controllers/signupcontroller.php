@@ -36,24 +36,23 @@
    if($_SERVER['REQUEST_METHOD']=="POST"){
 
     
-    $firstname=$authInstance->validate(ucfirst($_POST['fname']));
-    $lastname=$authInstance->validate(ucfirst($_POST['lname']));
-    $email=$authInstance->validate(ucfirst($_POST['email']));
-    $state=$authInstance->validate(ucfirst($_POST['state']));
-    $phone=$authInstance->validate($_POST['phone']);
-    $password=strtolower($_POST['password']);
-    $confirmpass=strtolower($_POST['confirmpass']);
-    $referral="AFRI-".rand(0,time());
-    $date=date('y-m-d');
-    $type="SIGNUP";
-    $read_msg="UNREAD";
-    $time=date("h:i:sa");
-
     
        $type=$_POST["action"];
        if($type=="first_reg"){
     
            // $authInstance= new User($conn);
+           $firstname=$authInstance->validate(ucfirst($_POST['fname']));
+           $lastname=$authInstance->validate(ucfirst($_POST['lname']));
+           $email=$authInstance->validate(ucfirst($_POST['email']));
+           $state=$authInstance->validate(ucfirst($_POST['state']));
+           $phone=$authInstance->validate($_POST['phone']);
+           $password=strtolower($_POST['password']);
+           $confirmpass=strtolower($_POST['confirmpass']);
+           $referral="AFRI-".rand(0,time());
+           $date=date('y-m-d');
+           $type="SIGNUP";
+           $read_msg="UNREAD";
+           $time=date("h:i:sa");
     
             
             
@@ -69,7 +68,34 @@
                                          //function to check if confirmpassword & password matches
                                           if($authInstance->matchpassword($password,$confirmpass)){
                                            
-                                            echo 'verified';
+                                           //function to register the user
+                                    if($registerInstance->register($firstname, $lastname, $email, $phone,  $referral, $state, $password, $date)){
+                                      if($data=$registerInstance->fetchRegistedDetails($email)){
+                                            //define session if login was succesful with returned user data
+                                            session_start();
+                                            $_SESSION['email']=$data['email'];
+                                            $_SESSION['firstname']=$data['firstname'];
+                                            $_SESSION['lastname']=$data['lastname'];
+                                            $_SESSION['id']=$data['id'];
+                                            $_SESSION["lastactivity"]=time();  
+                                            $_SESSION['loggedin']='permitted'; 
+                                            $_SESSION['lastactivetime']=date("h:i:sa"); 
+                                            $_SESSION['lastactivedate']=date("y-m-d");              
+                                            $_SESSION['datelastactivity']=date('y-m-d h:i:s');  
+                                            $ipaddress=$_SERVER['REMOTE_ADDR'];
+                                            $browsertype=$_SERVER['HTTP_USER_AGENT'];
+
+                                          //  $loginInstance->lastActivity($_SESSION['id'],$_SESSION["lastactivity"], $_SESSION['lastactivetime'], $_SESSION//['lastactivedate'],$_SESSION['datelastactivity']);                                                 
+                                            $loginInstance->usersLogData($_SESSION["id"],$ipaddress, $browsertype);
+                                                
+                                                       echo "success";                                                               
+
+                                      }else{
+                                            echo 'we could not sign you in as an agent';
+                                      }                                                                              
+                                 }else{
+                                     echo "an error occurred while attempting to sign up";
+                                 }
                                           
                                           }else{
                                               echo "password does not match";
@@ -95,19 +121,6 @@
                 echo "all fields are required to be filled";
             }
    }elseif($type=="second_reg"){
-       
-    $firstname=$authInstance->validate(ucfirst($_POST['fname']));
-    $lastname=$authInstance->validate(ucfirst($_POST['lname']));
-    $email=$authInstance->validate(ucfirst($_POST['email']));
-    $state=$authInstance->validate(ucfirst($_POST['state']));
-    $phone=$authInstance->validate($_POST['phone']);
-    $password=strtolower($_POST['password']);
-    $confirmpass=strtolower($_POST['confirmpass']);
-    $referral="AFRI-".rand(0,time());
-    $date=date('y-m-d');
-    $type="SIGNUP";
-    $read_msg="UNREAD";
-    $time=date("h:i:sa");
       
       $reasons=$authInstance->validate(ucfirst($_POST['reasons'])); 
    
@@ -143,34 +156,7 @@
                           if($imgInstance->moveImage($dptemp, $dirfile)){
                             if($imgInstance->moveImage($id_img_temp, $id_dirfile)){
                              
-                                    //function to register the user
-                                    if($registerInstance->register($firstname, $lastname, $email, $phone, $id_img, $dp, $referral, $reasons, $state, $password, $date)){
-                                        if($data=$registerInstance->fetchRegistedDetails($email)){
-                                              //define session if login was succesful with returned user data
-                                              session_start();
-                                              $_SESSION['email']=$data['email'];
-                                              $_SESSION['firstname']=$data['firstname'];
-                                              $_SESSION['lastname']=$data['lastname'];
-                                              $_SESSION['id']=$data['id'];
-                                              $_SESSION["lastactivity"]=time();  
-                                              $_SESSION['loggedin']='permitted'; 
-                                              $_SESSION['lastactivetime']=date("h:i:sa"); 
-                                              $_SESSION['lastactivedate']=date("y-m-d");              
-                                              $_SESSION['datelastactivity']=date('y-m-d h:i:s');  
-                                              $ipaddress=$_SERVER['REMOTE_ADDR'];
-                                              $browsertype=$_SERVER['HTTP_USER_AGENT'];
-
-                                            //  $loginInstance->lastActivity($_SESSION['id'],$_SESSION["lastactivity"], $_SESSION['lastactivetime'], $_SESSION//['lastactivedate'],$_SESSION['datelastactivity']);                                                 
-                                              $loginInstance->usersLogData($_SESSION["id"],$ipaddress, $browsertype);
-                                                  
-                                                         echo "success";                                                               
-
-                                        }else{
-                                              echo 'we could not sign you in as an agent';
-                                        }                                                                              
-                                   }else{
-                                       echo "an error occurred while attempting to sign up";
-                                   }
+                                    
                                 }else{
                                     echo "identity image failed to move to directory";
                                 }
