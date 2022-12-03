@@ -44,6 +44,7 @@
             $lastname=$authInstance->validate(ucfirst($_POST['lname']));
             $email=$authInstance->validate(ucfirst($_POST['email']));
             $state=$authInstance->validate(ucfirst($_POST['state']));
+            $phone=$authInstance->validate(ucfirst($_POST['phone']));
             $password=strtolower($_POST['password']);
             $confirmpass=strtolower($_POST['confirmpass']);
             $referral="AFRI-".rand(0,time());
@@ -53,7 +54,7 @@
             $time=date("h:i:sa");
             
             
-            if( !empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($confirmpass) && !empty($referral) ){
+            if( !empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($confirmpass) && !empty($phone) && !empty($referral) ){
                 if($authInstance->validLetters($firstname)){
                     if($authInstance->validLetters($lastname)){
                       //function to check invalid email
@@ -65,7 +66,7 @@
                                          //function to check if confirmpassword & password matches
                                           if($authInstance->matchpassword($password,$confirmpass)){
                                            
-                                            echo 'success';
+                                            echo 'verified';
                                           
                                           }else{
                                               echo "password does not match";

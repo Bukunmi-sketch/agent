@@ -63,9 +63,10 @@
    }
    
    input[type=text]:hover,input[type=email]:hover,select,input[type=password]:hover{
-   border:2px solid black;
+ /*  border:2px solid black; */
    background-color: white;
    border-radius: 3px;
+   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
    }
    
    

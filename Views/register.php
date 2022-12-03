@@ -47,12 +47,12 @@ include('../Controllers/signupcontroller.php');
                <form action="#">
                   <div class="error"></div><br>
 
-                  <?php if (isset($_GET['step']) == 1) :   ?>
+                  <?php if (isset($_GET['step']) == 2) :   ?>
 
 
                     
                   <div class="images">
-                            <label for="productImage">Upload your passport</label>
+                            <label for="passport">Upload your passport</label>
                             <div id="upload">
                                 <img src="" onClick="trigger()" id="profileDisplay">
                                 <input type="file" name="product_image" onchange="displayImage(this)" id="capture" style="display:none">
@@ -61,8 +61,8 @@ include('../Controllers/signupcontroller.php');
 
                             <label for="identiyCard">Upload a identity card (it could be your driver's license,voter's card e.t.c) </label>
                             <div id="uploadb">
-                                <img src="" onClick="triggerb()" id="profileDisplayb">
-                                <input type="file" name="product_image" onchange="displayImageb(this)" id="captureb" style="display:none;border:1px solid red;">
+                                <img src="" onClick="triggerb()" aid="profileDisplayb">
+                                <input type="file" name="product_imageb" onchange="displayImageb(this)" id="captureb" style="display:none;border:1px solid red;">
                                 <i class="fa fa-camera" id="camerab"></i>
                             </div>
                         </div>
@@ -76,11 +76,6 @@ include('../Controllers/signupcontroller.php');
                         <div class="inputbox-details">
                             <button type="submit" class="btn" name="register">Sign up</button>
                         </div>
-
-
-
-
-
 
                   <?php else : ?>
 
@@ -208,9 +203,10 @@ include('../Controllers/signupcontroller.php');
                let data = xhr.response;
 
                if (data === "success") {
-                  //    error.textContent=data;
+                  location.href = "dashboard.php";
+               } else if(data === "verified"){
                   location.href = "register.php?step=2";
-               } else {
+               }else{
                   error.textContent = data;
                   error.style.display = "block";
                   btn.innerHTML = "Sign up again";
