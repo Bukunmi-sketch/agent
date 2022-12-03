@@ -46,6 +46,37 @@ include('../Controllers/signupcontroller.php');
           				<form action="#">
                 <div class="error"></div><br>
              
+<?php  if(isset($_GET['step']) == 1):   ?>
+
+
+<div class="images">
+                            <label for="productImage">Upload your passport</label>
+                            <div id="upload">
+                                <img src="" onClick="trigger()" id="profileDisplay">
+                                <input type="file" name="product_image" onchange="displayImage(this)" id="capture" style="display:none">
+                                <i class="fa fa-camera" id="camera"></i>
+                            </div> <br>
+
+                            <label for="identiyCard">Upload a identity card (it could be your driver's license,voter's card e.t.c)  </label>
+                            <div id="uploadb">
+                                <img src="" onClick="triggerb()" id="profileDisplayb">
+                                <input type="file" name="product_image" onchange="displayImageb(this)" id="captureb"  style="display:none;border:1px solid red;" >
+                                <i class="fa fa-camera" id="camerab"></i>
+                            </div>
+                        </div>
+
+                  <input type="hidden" name="action" value="first_reg" >  
+				      <div class="others-field">
+				           <button type="submit" class="btn" name="register"> continue </button>
+				     </div>
+
+
+
+
+
+
+<?php else: ?>
+
 		        <div class="name-details">
 		              <div class="fields">
                         <label for="firstname">Firstname</label>
@@ -98,7 +129,7 @@ include('../Controllers/signupcontroller.php');
 				     	     <span id="showb" onclick="checkb()"><i class="fa fa-eye"></i></span>	  
 				     </div><br>
 				       
-                       <input type="hidden" name="action" value="first_reg" >  
+                  <input type="hidden" name="action" value="second_reg" >  
 				      <div class="others-field">
 				           <button type="submit" class="btn" name="register">Sign up</button>
 				     </div>
@@ -108,6 +139,8 @@ include('../Controllers/signupcontroller.php');
 		   	<div class="create">			
 			       <a href ="login.php " class="createbut"> Already have an Account ? Login</a>
             </div>
+
+      <?php endif ?>      
             
             </form>
        </div>

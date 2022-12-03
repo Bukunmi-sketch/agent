@@ -65,34 +65,7 @@
                                          //function to check if confirmpassword & password matches
                                           if($authInstance->matchpassword($password,$confirmpass)){
                                            
-                                              //function to register the user
-                                               if($registerInstance->register($firstname, $lastname, $email, $referral, $password, $date)){
-                                                    if($data=$registerInstance->fectchRegistedDetails($email)){
-                                                          //define session if login was succesful with returned user data
-                                                          session_start();
-                                                          $_SESSION['email']=$data['email'];
-                                                          $_SESSION['firstname']=$data['firstname'];
-                                                          $_SESSION['lastname']=$data['lastname'];
-                                                          $_SESSION['id']=$data['id'];
-                                                          $_SESSION["lastactivity"]=time();  
-                                                          $_SESSION['loggedin']='permitted'; 
-                                                          $_SESSION['lastactivetime']=date("h:i:sa"); 
-                                                          $_SESSION['lastactivedate']=date("y-m-d");              
-                                                          $_SESSION['datelastactivity']=date('y-m-d h:i:s');  
-                                                          $ipaddress=$_SERVER['REMOTE_ADDR'];
-                                                          $browsertype=$_SERVER['HTTP_USER_AGENT'];
-
-                                                        //  $loginInstance->lastActivity($_SESSION['id'],$_SESSION["lastactivity"], $_SESSION['lastactivetime'], $_SESSION//['lastactivedate'],$_SESSION['datelastactivity']);                                                 
-                                                          $loginInstance->usersLogData($_SESSION["id"],$ipaddress, $browsertype);
-                                                              
-                                                                     echo "success";                                                               
-          
-                                                    }else{
-                                                          echo 'we could not sign you in as an agent';
-                                                    }                                                                              
-                                               }else{
-                                                   echo "an error occurred while attempting to sign up";
-                                               }
+                                            echo 'success';
                                           
                                           }else{
                                               echo "password does not match";
@@ -120,23 +93,86 @@
    }elseif($type=="second_reg"){
 
       
-               $question=$authInstance->validate(ucfirst($_POST['question'] ?? ''));
-               $answer=$authInstance->validate(($_POST['answer'] ));
-               $userid=$_POST["userid"];
-                
-                   if(!empty($question) && !empty($answer)){
-                    if($authInstance->validLetters($answer)){    
-                        if($registerInstance->securityQuestion($question,$userid,$answer)){
-                             echo "success";
-                        }else{
-                            echo "an error occured ";
-                        } 
-                    }else{
-                        echo "only valid letter and whitespaces are allowed in your answer";
-                    }  
+      $biotext=$authInstance->validate(ucfirst($_POST['textbio'])); 
+    //  $biotext=$authInstance->escapeString($biotext);
+    //  $imagename=$_FILES['dpic'];
+      $dp=$_FILES['dpic']["name"];
+      $dpsize=$_FILES['dpic']['size'];
+      $dptemp=$_FILES['dpic']['tmp_name'];
+  
+      //$dir="images/";
+      $dir="../Images/signup_img/dp--";
+      $dirfile=$dir.basename($dp);
+      
+      $userid=$_POST["userid"];
+ 
+     
+       
+       // empty($dp) ? $dp= $dp 
+  
+  
+      if(!empty($dp) && !empty($biotext)){
+  
+                if($imgInstance->imgextension($dp)){
+                      if($imgInstance->largeImage($dpsize)){
+                          if($imgInstance->moveImage($dptemp, $dirfile)){
+                              if($imgInstance->updateImage( $dp, $biotext, $userid)){
+
+
+                                    //function to register the user
+                                    if($registerInstance->register($firstname, $lastname, $email, $referral, $password, $date)){
+                                        if($data=$registerInstance->fectchRegistedDetails($email)){
+                                              //define session if login was succesful with returned user data
+                                              session_start();
+                                              $_SESSION['email']=$data['email'];
+                                              $_SESSION['firstname']=$data['firstname'];
+                                              $_SESSION['lastname']=$data['lastname'];
+                                              $_SESSION['id']=$data['id'];
+                                              $_SESSION["lastactivity"]=time();  
+                                              $_SESSION['loggedin']='permitted'; 
+                                              $_SESSION['lastactivetime']=date("h:i:sa"); 
+                                              $_SESSION['lastactivedate']=date("y-m-d");              
+                                              $_SESSION['datelastactivity']=date('y-m-d h:i:s');  
+                                              $ipaddress=$_SERVER['REMOTE_ADDR'];
+                                              $browsertype=$_SERVER['HTTP_USER_AGENT'];
+
+                                            //  $loginInstance->lastActivity($_SESSION['id'],$_SESSION["lastactivity"], $_SESSION['lastactivetime'], $_SESSION//['lastactivedate'],$_SESSION['datelastactivity']);                                                 
+                                              $loginInstance->usersLogData($_SESSION["id"],$ipaddress, $browsertype);
+                                                  
+                                                         echo "success";                                                               
+
+                                        }else{
+                                              echo 'we could not sign you in as an agent';
+                                        }                                                                              
+                                   }else{
+                                       echo "an error occurred while attempting to sign up";
+                                   }
+
+
+                             }else{
+                                 echo "an error occurred while uploading the image";
+                             }
+                          }else{
+                              echo "file failed to move";
+                          }
+                      }else{
+                          echo "image size must not be larger than 900kb";
+                      }     
                }else{
-                   echo "kindly flll all textboxes";
-               }    
+                  echo 'file is not an image';
+                } 
+      }else{
+         if(empty($dp) && !empty($biotext)){
+             $dp='null.png';
+             if($imgInstance->updateImage($dp, $biotext, $userid)){
+                 echo "success";
+            }else{
+                echo "an error occurred while uploading the image";
+            }
+         }else{
+             echo "your bio description is required";
+         }
+      }
                       
    }elseif($type=="third_reg"){
 

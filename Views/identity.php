@@ -52,7 +52,19 @@ include('../Controllers/signupcontroller.php');
                                 <img src="" onClick="trigger()" id="profileDisplay">
                                 <input type="file" name="product_image" onchange="displayImage(this)" id="capture" style="display:none">
                                 <i class="fa fa-camera" id="camera"></i>
+                            </div> <br>
+
+                            <label for="identiyCard">Upload a identity card (it could be your driver's license,voter's card e.t.c) </label>
+                            <div id="uploadb">
+                                <img src="" onClick="triggerb()" id="profileDisplayb">
+                                <input type="file" name="product_image" onchange="displayImageb(this)" id="captureb" style="display:none;border:1px solid red;">
+                                <i class="fa fa-camera" id="camerab"></i>
                             </div>
+                        </div>
+
+                        <div class="inputbox-details">
+                            <label for="productDescription">Product description</label>
+                            <textarea id="descid" name="product_description" class="description" placeholder="Product description" autofocus value=" "></textarea>
                         </div>
 
                         <input type="hidden" name="action" value="first_reg">
@@ -76,19 +88,33 @@ include('../Controllers/signupcontroller.php');
 <script type="text/javascript">
     //const form=document.querySelector("");
 
-    function trigger(e){
-                      document.querySelector("#capture").click();
-		         }
-     
-               function displayImage(e) {
-                    if (e.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e){
-                    document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
-                }
-                  reader.readAsDataURL(e.files[0]);
-    		 }
-     	   }
+    function trigger(e) {
+        document.querySelector("#capture").click();
+    }
+
+    function displayImage(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
+
+    function triggerb(e) {
+        document.querySelector("#captureb").click();
+    }
+
+    function displayImageb(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.querySelector('#profileDisplayb').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
 
     const form = document.querySelector("form");
     const btn = document.querySelector("button");
