@@ -46,31 +46,37 @@ include('../Controllers/signupcontroller.php');
                         <div class="error"></div><br>
 
 
-                        <div class="images">
-                            <label for="productImage">Upload your passport</label>
+                     <!---  -------------------------------------    SECOND BOX FORM-----------------------------------             ----->
+                  
+                  <div class="second-form" style="display: none;">
+                  <div class="images">
+                            <label for="passport">Upload your passport</label>
                             <div id="upload">
                                 <img src="" onClick="trigger()" id="profileDisplay">
-                                <input type="file" name="product_image" onchange="displayImage(this)" id="capture" style="display:none">
+                                <input type="file" name="user_image" onchange="displayImage(this)" id="capture" style="display:none">
                                 <i class="fa fa-camera" id="camera"></i>
                             </div> <br>
 
                             <label for="identiyCard">Upload a identity card (it could be your driver's license,voter's card e.t.c) </label>
                             <div id="uploadb">
-                                <img src="" onClick="triggerb()" id="profileDisplayb">
-                                <input type="file" name="product_image" onchange="displayImageb(this)" id="captureb" style="display:none;border:1px solid red;">
+                                <img src="" onClick="triggerb()" aid="profileDisplayb">
+                                <input type="file" name="identity_image" onchange="displayImageb(this)" id="captureb" >
                                 <i class="fa fa-camera" id="camerab"></i>
                             </div>
                         </div>
 
                         <div class="inputbox-details">
-                            <label for="productDescription">Product description</label>
-                            <textarea id="descid" name="product_description" class="description" placeholder="Product description" autofocus value=" "></textarea>
+                            <label for="reason"> Your Reason for Joining Us:</label>
+                            <textarea id="descid" name="reasons" class="description" placeholder="Write here" autofocus value=" "></textarea>
                         </div>
 
-                        <input type="hidden" name="action" value="first_reg">
-                        <div class="others-field">
-                            <button type="submit" class="btn" name="register">Sign up</button>
+                        <input type="hidden" name="action" value="second_reg">
+                        <div class="inputbox-details">
+                            <button type="submit" class="btn" id="signup-btn" name="register">Sign up</button>
                         </div>
+                   </div>
+         
+             <!---  ------------------------------------- END OF SECOND BOX FORM-----------------------------------             ----->
 
                 </div>
 

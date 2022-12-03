@@ -46,39 +46,8 @@ include('../Controllers/signupcontroller.php');
             <div class="login-details">
                <form action="#">
                   <div class="error"></div><br>
-
-                  <?php if (isset($_GET['step']) == 2) :   ?>
-
-
-                    
-                  <div class="images">
-                            <label for="passport">Upload your passport</label>
-                            <div id="upload">
-                                <img src="" onClick="trigger()" id="profileDisplay">
-                                <input type="file" name="user_image" onchange="displayImage(this)" id="capture" style="display:none">
-                                <i class="fa fa-camera" id="camera"></i>
-                            </div> <br>
-
-                            <label for="identiyCard">Upload a identity card (it could be your driver's license,voter's card e.t.c) </label>
-                            <div id="uploadb">
-                                <img src="" onClick="triggerb()" aid="profileDisplayb">
-                                <input type="file" name="identity_image" onchange="displayImageb(this)" id="captureb" >
-                                <i class="fa fa-camera" id="camerab"></i>
-                            </div>
-                        </div>
-
-                        <div class="inputbox-details">
-                            <label for="reason"> Your Reason for Joining Us:</label>
-                            <textarea id="descid" name="reasons" class="description" placeholder="Write here" autofocus value=" "></textarea>
-                        </div>
-
-                        <input type="hidden" name="action" value="second_reg">
-                        <div class="inputbox-details">
-                            <button type="submit" class="btn" name="register">Sign up</button>
-                        </div>
-
-                  <?php else : ?>
-
+              <!---  -------------------------------------  FIRST BOX FORM-----------------------------------             ----->
+                  <div class="first-form" >
                      <div class="flex-inbox">
                         <div class="inputbox-details">
                            <label for="fname">Firstname</label>
@@ -132,7 +101,7 @@ include('../Controllers/signupcontroller.php');
 
                         <input type="hidden" name="action" value="first_reg">
                        <div class="inputbox-details">
-                           <button type="submit" class="btn" name="register"> Next </button>
+                           <button type="submit" class="btn" id="next-btn" name="register"> Next </button>
                         </div>
 
                     
@@ -140,7 +109,8 @@ include('../Controllers/signupcontroller.php');
                         <a href="login.php " class="createbut"> Already have an Account ? Login</a>
                      </div>
 
-                  <?php endif ?>
+                  </div>
+                <!---  ------------------------------------- END OF FIRST BOX FORM-----------------------------------             ----->
 
                </form>
             </div>
@@ -189,6 +159,7 @@ include('../Controllers/signupcontroller.php');
    const btn = document.querySelector("button");
    const error = document.querySelector(".error");
 
+
    form.onsubmit = (e) => {
       e.preventDefault();
    }
@@ -203,9 +174,7 @@ include('../Controllers/signupcontroller.php');
                let data = xhr.response;
 
                if (data === "success") {
-                  location.href = "dashboard.php";
-               } else if(data === "verified"){
-                  location.href = "register.php?step=2";
+                  location.href = "step2.php";
                }else{
                   error.textContent = data;
                   error.style.display = "block";
@@ -224,11 +193,6 @@ include('../Controllers/signupcontroller.php');
       xhr.open("POST", "../Controllers/signupcontroller.php", true);
       let formdata = new FormData(form);
       xhr.send(formdata);
-
-
-
-
-
    }
 
 

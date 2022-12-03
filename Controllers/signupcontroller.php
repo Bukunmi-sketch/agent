@@ -36,26 +36,28 @@
    if($_SERVER['REQUEST_METHOD']=="POST"){
 
     
+    $firstname=$authInstance->validate(ucfirst($_POST['fname']));
+    $lastname=$authInstance->validate(ucfirst($_POST['lname']));
+    $email=$authInstance->validate(ucfirst($_POST['email']));
+    $state=$authInstance->validate(ucfirst($_POST['state']));
+    $phone=$authInstance->validate($_POST['phone']);
+    $password=strtolower($_POST['password']);
+    $confirmpass=strtolower($_POST['confirmpass']);
+    $referral="AFRI-".rand(0,time());
+    $date=date('y-m-d');
+    $type="SIGNUP";
+    $read_msg="UNREAD";
+    $time=date("h:i:sa");
+
+    
        $type=$_POST["action"];
        if($type=="first_reg"){
     
            // $authInstance= new User($conn);
     
-            $firstname=$authInstance->validate(ucfirst($_POST['fname']));
-            $lastname=$authInstance->validate(ucfirst($_POST['lname']));
-            $email=$authInstance->validate(ucfirst($_POST['email']));
-            $state=$authInstance->validate(ucfirst($_POST['state']));
-            $phone=$authInstance->validate(ucfirst($_POST['phone']));
-            $password=strtolower($_POST['password']);
-            $confirmpass=strtolower($_POST['confirmpass']);
-            $referral="AFRI-".rand(0,time());
-            $date=date('y-m-d');
-            $type="SIGNUP";
-            $read_msg="UNREAD";
-            $time=date("h:i:sa");
             
             
-            if( !empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($confirmpass) && !empty($phone) && !empty($referral) ){
+            if( !empty($firstname) && !empty($lastname) && !empty($email) && !empty($password) && !empty($confirmpass) && !empty($phone)  && !empty($state) && !empty($referral) ){
                 if($authInstance->validLetters($firstname)){
                     if($authInstance->validLetters($lastname)){
                       //function to check invalid email
@@ -93,7 +95,19 @@
                 echo "all fields are required to be filled";
             }
    }elseif($type=="second_reg"){
-
+       
+    $firstname=$authInstance->validate(ucfirst($_POST['fname']));
+    $lastname=$authInstance->validate(ucfirst($_POST['lname']));
+    $email=$authInstance->validate(ucfirst($_POST['email']));
+    $state=$authInstance->validate(ucfirst($_POST['state']));
+    $phone=$authInstance->validate($_POST['phone']);
+    $password=strtolower($_POST['password']);
+    $confirmpass=strtolower($_POST['confirmpass']);
+    $referral="AFRI-".rand(0,time());
+    $date=date('y-m-d');
+    $type="SIGNUP";
+    $read_msg="UNREAD";
+    $time=date("h:i:sa");
       
       $reasons=$authInstance->validate(ucfirst($_POST['reasons'])); 
    
@@ -130,7 +144,7 @@
                             if($imgInstance->moveImage($id_img_temp, $id_dirfile)){
                              
                                     //function to register the user
-                                    if($registerInstance->register($firstname, $lastname, $email,$id_img, $dp, $referral, $reasons, $state, $password, $date)){
+                                    if($registerInstance->register($firstname, $lastname, $email, $phone, $id_img, $dp, $referral, $reasons, $state, $password, $date)){
                                         if($data=$registerInstance->fetchRegistedDetails($email)){
                                               //define session if login was succesful with returned user data
                                               session_start();

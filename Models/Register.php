@@ -12,18 +12,19 @@ require '../Includes/db.inc.php';
         }
 
         //register new users
-        public function register($firstname, $lastname,  $email, $identity_pic, $display_pic, $referral, $reason, $state, $password, $date){  
+        public function register($firstname, $lastname,  $email, $mobile, $identity_pic, $display_pic, $referral, $reason, $state, $password, $date){  
                try{
                    //hash the password;
                    $user_hashed_password = password_hash($password, PASSWORD_DEFAULT );
    
-                   $sql="INSERT INTO agents(firstname,lastname, email, identity_pic, display_pic, referralcodes, reason, Status, state, Password, reg_date)VALUES   (:firstname, :lastname, :email, :identity_pic, :display_pic, :referralcodes, :reason, :status, :state, :password, :date)";
+                   $sql="INSERT INTO agents(firstname,lastname, email, Mobile, identity_pic, display_pic, referralcodes, reason, Status, state, Password, reg_date)VALUES   (:firstname, :lastname, :email, :mobile, :identity_pic, :display_pic, :referralcodes, :reason, :status, :state, :password, :date)";
                    $stmt= $this->db->prepare($sql);
                    $result=  $stmt->execute([
                         ":firstname"=>$firstname,
                         ":lastname" =>$lastname,
                         ":identity_pic" =>$identity_pic,
                         ":display_pic" =>$display_pic,
+                        ":mobile" =>$mobile,
                         ":reason" =>$reason,
                         ":state" =>$state,
                         ":referralcodes" =>$referral,
