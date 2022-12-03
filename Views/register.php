@@ -68,12 +68,12 @@ include('../Controllers/signupcontroller.php');
                         </div>
 
                         <div class="inputbox-details">
-                            <label for="productDescription">Product description</label>
-                            <textarea id="descid" name="product_description" class="description" placeholder="Product description" autofocus value=" "></textarea>
+                            <label for="reason"> Your Reason for Joining Us:</label>
+                            <textarea id="descid" name="reasons" class="description" placeholder="Write here" autofocus value=" "></textarea>
                         </div>
 
                         <input type="hidden" name="action" value="second_reg">
-                        <div class="others-field">
+                        <div class="inputbox-details">
                             <button type="submit" class="btn" name="register">Sign up</button>
                         </div>
 
@@ -137,7 +137,7 @@ include('../Controllers/signupcontroller.php');
 
                         <input type="hidden" name="action" value="first_reg">
                        <div class="inputbox-details">
-                           <button type="submit" class="btn" name="register">Sign up</button>
+                           <button type="submit" class="btn" name="register"> Next </button>
                         </div>
 
                     
@@ -160,6 +160,35 @@ include('../Controllers/signupcontroller.php');
 <script src="../Resources/js/validatephone.js"></script>
 <script type="text/javascript">
    //const form=document.querySelector("");
+
+   function trigger(e) {
+        document.querySelector("#capture").click();
+    }
+
+    function displayImage(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
+
+    function triggerb(e) {
+        document.querySelector("#captureb").click();
+    }
+
+    function displayImageb(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.querySelector('#profileDisplayb').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
+
 
    const form = document.querySelector("form");
    const btn = document.querySelector("button");
