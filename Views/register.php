@@ -126,33 +126,6 @@ include('../Controllers/signupcontroller.php');
 <script type="text/javascript">
    //const form=document.querySelector("");
 
-   function trigger(e) {
-        document.querySelector("#capture").click();
-    }
-
-    function displayImage(e) {
-        if (e.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.querySelector('#profileDisplay').setAttribute('src', e.target.result);
-            }
-            reader.readAsDataURL(e.files[0]);
-        }
-    }
-
-    function triggerb(e) {
-        document.querySelector("#captureb").click();
-    }
-
-    function displayImageb(e) {
-        if (e.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                document.querySelector('#profileDisplayb').setAttribute('src', e.target.result);
-            }
-            reader.readAsDataURL(e.files[0]);
-        }
-    }
 
 
    const form = document.querySelector("form");

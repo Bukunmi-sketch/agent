@@ -27,7 +27,7 @@ include('../Controllers/signupcontroller.php');
     <main>
         <div class="newpostheader">
             <span onclick="history.back()"><i class="fa fa-arrow-left"></i></a></span>
-            <h> Agent Registration </h>
+            <h>  Registration </h>
         </div>
 
         <div class="container">
@@ -48,7 +48,7 @@ include('../Controllers/signupcontroller.php');
 
                      <!---  -------------------------------------    SECOND BOX FORM-----------------------------------             ----->
                   
-                  <div class="second-form" style="display: none;">
+                  <div class="second-form">
                   <div class="images">
                             <label for="passport">Upload your passport</label>
                             <div id="upload">

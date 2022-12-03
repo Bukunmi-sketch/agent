@@ -17,7 +17,7 @@ require '../Includes/db.inc.php';
                    //hash the password;
                    $user_hashed_password = password_hash($password, PASSWORD_DEFAULT );
    
-                   $sql="INSERT INTO agents(firstname,lastname, email, Mobile,  referralcodes,  Status, state, Password, reg_date)VALUES   (:firstname, :lastname, :email, :mobile, :identity_pic, :display_pic, :referralcodes, :reason, :status, :state, :password, :date)";
+                   $sql="INSERT INTO agents(firstname,lastname, email, Mobile,  referralcodes,  Status, reg_status, state, Password, reg_date)VALUES   (:firstname, :lastname, :email, :mobile,  :referralcodes, :status, :reg_status, :state, :password, :date)";
                    $stmt= $this->db->prepare($sql);
                    $result=  $stmt->execute([
                         ":firstname"=>$firstname,
@@ -27,6 +27,7 @@ require '../Includes/db.inc.php';
                         ":referralcodes" =>$referral,
                         ":email" =>$email,
                         ":status" => 'pending',
+                        ":reg_status" => 'incomplete',
                         ":password" => $user_hashed_password,
                         ":date" =>$date
                    ]);
