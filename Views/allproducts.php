@@ -8,18 +8,6 @@
   include '../Includes/autoload.php';
   include './auth/redirect.php';
  
- // var_dump($sessionid);
- // die();
-  
-    $AgentInfo=$AgentInstance->getAgentinfo($sessionid);
-    $email =$AgentInfo['email'];
-    $firstname=$AgentInfo['firstname'];
-    $lastname= $AgentInfo['lastname'];
-    $referral= $AgentInfo['referralcodes'];
-    $registered_date=$AgentInfo['date'];
-    $reg_status=$AgentInfo['reg_status'];
-
-   
   include './auth/complete-redirect.php';
   
 
