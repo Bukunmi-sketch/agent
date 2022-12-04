@@ -33,6 +33,7 @@ class Agent{
           'lastname' =>   $returned_row['lastname'],
           'referralcodes' =>   $returned_row['referralcodes'],
           'date' =>      $returned_row['reg_date'],
+          'reg_status'=> $returned_row['reg_status'],
           'lastactivetime'=> $returned_row['LastActiveTime'],
           'lastactivedate' => $returned_row['LastActiveDate']
           ];

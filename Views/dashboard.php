@@ -12,6 +12,7 @@
     $lastname= $agentInfo['lastname'];
     $registered_date=$agentInfo['date'];
     $referral=$agentInfo['referralcodes'];
+    $reg_status=$agentInfo['reg_status'];
    
 
    

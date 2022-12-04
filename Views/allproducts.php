@@ -3,8 +3,9 @@
   ob_start();
 
   $sessionid=$_SESSION['id'];  
- 
-  include '../Includes/inc.php';
+  
+ // include '../Includes/inc.php';
+  include '../Includes/autoload.php';
   include './auth/redirect.php';
  
  // var_dump($sessionid);
@@ -16,10 +17,10 @@
     $lastname= $AgentInfo['lastname'];
     $referral= $AgentInfo['referralcodes'];
     $registered_date=$AgentInfo['date'];
-
+    $reg_status=$AgentInfo['reg_status'];
 
    
-  
+  include './auth/complete-redirect.php';
   
 
    
@@ -66,7 +67,7 @@
                          
                            <div class="productname"> <?php echo  "{$itemdata['product_name']}" ; ?> </div>
                           
-                           <div id="followers-count"  > 2 sales </div>
+                           <div id="followers-count"  > <?php echo $reg_status ; ?>  </div>
                            <div style="display: flex;">
                            <div id="followers-count"> <?php echo  "{$itemdata['category']}" ; ?> </div>
                            <a href="#"> <div class="profileview">view details</div></a>
