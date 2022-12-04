@@ -53,14 +53,15 @@ require '../Includes/db.inc.php';
            public function updateImage( $dp, $id_img, $reasons, $sessionid){
  
             try{
-            
-                $dpsql="UPDATE agents SET identity_pic=:identity_pic, display_pic=:display_pic, reason=:reasons WHERE id=:agentid";
+                $reg_status='complete';
+                $dpsql="UPDATE agents SET identity_pic=:identity_pic, display_pic=:display_pic, reason=:reasons, reg_status=:reg_status WHERE id=:agentid";
             
                 $stmt=$this->db->prepare($dpsql);
                 $stmt->bindParam(":agentid", $sessionid);
                 $stmt->bindParam(":reasons", $reasons);
                 $stmt->bindParam(":identity_pic", $id_img);
                 $stmt->bindParam(":display_pic", $dp);
+                $stmt->bindParam(":reg_status", $reg_status);
             
                 if( $stmt->execute()){
                     //return the users data and email will be the unique key                  
