@@ -138,7 +138,7 @@
       $id_dir="../Images/identity-img/";
       $id_dirfile=$dir.basename($id_img);
       
-    //  $userid=$_POST["userid"];
+      $agentid=$_POST["agentid"];
  
      
        
@@ -155,7 +155,7 @@
 
                           if($imgInstance->moveImage($dptemp, $dirfile)){
                             if($imgInstance->moveImage($id_img_temp, $id_dirfile)){
-                                if($registerInstance->updateImage( $dp, $id_img, $reasons, $sessionid )){
+                                if($registerInstance->updateImage( $dp, $id_img, $reasons, $agentid )){
                                     echo "success";
                                }else{
                                    echo "an error occurred while uploading the image";

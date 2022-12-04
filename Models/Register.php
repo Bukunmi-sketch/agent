@@ -54,20 +54,20 @@ require '../Includes/db.inc.php';
  
             try{
             
-                $dpsql="UPDATE agents SET identity_pic=:identity_pic, display_pic=:display_pic, reasons=:reasons WHERE id=:userid";
+                $dpsql="UPDATE agents SET identity_pic=:identity_pic, display_pic=:display_pic, reason=:reasons WHERE id=:agentid";
             
                 $stmt=$this->db->prepare($dpsql);
-                $stmt->bindParam(":userid", $sessionid);
+                $stmt->bindParam(":agentid", $sessionid);
                 $stmt->bindParam(":reasons", $reasons);
                 $stmt->bindParam(":identity_pic", $id_img);
                 $stmt->bindParam(":display_pic", $dp);
             
                 if( $stmt->execute()){
                     //return the users data and email will be the unique key                  
-                            return [
+                            return true;/*[
                             'id' => $sessionid,  
                             'resons' => $reasons
-                                ];
+                                ];*/
                            }else{
                         //   echo "error while inserting";
                         return false;
@@ -130,65 +130,7 @@ public function RegisterCheckemail($email){
       }
     }  
 
-    public function RegisterCheckusername($username){
-      try{
-      
-        $sql="SELECT * FROM administrator WHERE username =:username";
-        $stmt= $this->db->prepare($sql);
-        $stmt->bindParam(':username', $username);
-        $stmt->execute();
-        // Check if row is actually returned
-        if($stmt->rowCount() > 0 ){
-          //  echo "username has been used";
-            return false;
-         } else{   
-            //   echo 'continue to sign up';
-               return true;
-           }
-      }catch(PDOException $e){
-             echo  $e->getMessage(); 
-         }
-    }
-
-    public function registerUsername($username,$userid,$country){
-        $sql="UPDATE administrator SET username=:username,Country=:country WHERE id=:userid";   
-        $stmtupdate=$this->db->prepare($sql);
-        $stmtupdate->bindParam(":userid", $userid);
-        $stmtupdate->bindParam(":username", $username);
-        $stmtupdate->bindParam(":country", $country);
-        if( $stmtupdate->execute()){
-          return true;
-        }else{
-            return false;
-        }
-    }
-
-    public function interestAndWeb($interest,$userid,$website){
-        $sql="UPDATE administrator SET interest=:interest,website=:website WHERE id=:userid";   
-        $stmtupdate=$this->db->prepare($sql);
-        $stmtupdate->bindParam(":userid", $userid);
-        $stmtupdate->bindParam(":interest", $interest);
-        $stmtupdate->bindParam(":website", $website);
-        if( $stmtupdate->execute()){
-          return true;
-        }else{
-            return false;
-        }
-    }
-
-    
-    public function securityQuestion($question,$userid,$answer){
-      $sql="UPDATE administrator SET forget_question=:question, forget_answer=:answer WHERE id=:userid";   
-      $stmtupdate=$this->db->prepare($sql);
-      $stmtupdate->bindParam(":userid", $userid);
-      $stmtupdate->bindParam(":question", $question);
-      $stmtupdate->bindParam(":answer", $answer);
-      if( $stmtupdate->execute()){
-        return true;
-      }else{
-          return false;
-      }
-  }
+   
 
     
 public function createSignupNotification($sessionid, $getid, $type,$status, $reg_date, $time){

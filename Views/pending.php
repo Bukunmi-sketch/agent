@@ -8,10 +8,11 @@
     $sessionid=$_SESSION['id'];
       //used as a unique key to get all the users data after signup 
     $email= $_SESSION['email'];
-     //get all the users info with the users class
-    $userInfo=$userInstance->getuserinfo($sessionid);
-    $firstname=$userInfo['firstname'];
-    $lastname= $userInfo['lastname'];
+    $AgentInfo = $AgentInstance->getAgentinfo($sessionid);
+    $email = $AgentInfo['email'];
+    $firstname = $AgentInfo['firstname'];
+    $lastname = $AgentInfo['lastname'];
+    $registered_date = $AgentInfo['date'];
 
 
 

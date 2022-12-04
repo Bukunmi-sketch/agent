@@ -41,7 +41,7 @@ $registered_date = $AgentInfo['date'];
     <main>
         <div class="newpostheader">
             <span onclick="history.back()"><i class="fa fa-arrow-left"></i></a></span>
-            <h>  Registration<?php echo "{$firstname} {$lastname}"; ?> </h>
+            <h>  Registration<?php echo "{$firstname} {$lastname} {$sessionid}"; ?> </h>
         </div>
 
         <div class="container">
@@ -80,6 +80,7 @@ $registered_date = $AgentInfo['date'];
                         </div>
 
                         <div class="inputbox-details">
+                            <input type="hidden" name="agentid" value="<?php echo $sessionid; ?>" > 
                             <label for="reason"> Your Reason for Joining Us:</label>
                             <textarea id="descid" name="reasons" class="description" placeholder="Write here" autofocus value=" "></textarea>
                         </div>
