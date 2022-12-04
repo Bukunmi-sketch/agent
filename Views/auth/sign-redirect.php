@@ -5,7 +5,7 @@
 
   */
 
-  if( !isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !==true) {
+  if( !isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== 'permitted') {
     $authInstance->redirect("signup.php");
   }
 

@@ -50,6 +50,35 @@ require '../Includes/db.inc.php';
                }
            }   //register()
 
+           public function updateImage( $dp, $id_img, $reasons, $sessionid){
+ 
+            try{
+            
+                $dpsql="UPDATE agents SET identity_pic=:identity_pic, display_pic=:display_pic, reasons=:reasons WHERE id=:userid";
+            
+                $stmt=$this->db->prepare($dpsql);
+                $stmt->bindParam(":userid", $sessionid);
+                $stmt->bindParam(":reasons", $reasons);
+                $stmt->bindParam(":identity_pic", $id_img);
+                $stmt->bindParam(":display_pic", $dp);
+            
+                if( $stmt->execute()){
+                    //return the users data and email will be the unique key                  
+                            return [
+                            'id' => $sessionid,  
+                            'resons' => $reasons
+                                ];
+                           }else{
+                        //   echo "error while inserting";
+                        return false;
+                     }
+                } catch(PDOException $e){
+                       echo  $e->getMessage(); 
+                   }
+            
+                }
+
+
 
                                //if email already exist  //auth
 public function RegisterCheckemail($email){

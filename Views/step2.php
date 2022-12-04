@@ -1,5 +1,19 @@
 <?php
+session_start();
+ob_start();
+
+$sessionid=$_SESSION['id'];
+
 include('../Controllers/signupcontroller.php');
+
+include '../Includes/autoload.php';
+include './auth/sign-redirect.php'; 
+
+$AgentInfo = $AgentInstance->getAgentinfo($sessionid);
+$email = $AgentInfo['email'];
+$firstname = $AgentInfo['firstname'];
+$lastname = $AgentInfo['lastname'];
+$registered_date = $AgentInfo['date'];
 
 
 
@@ -9,7 +23,7 @@ include('../Controllers/signupcontroller.php');
 <html lang="en">
 
 <head>
-    <title>Register as an Agent</title>
+    <title>Upload identity images</title>
 
     <?php include '../Includes/metatags.php'; ?>
 
@@ -27,7 +41,7 @@ include('../Controllers/signupcontroller.php');
     <main>
         <div class="newpostheader">
             <span onclick="history.back()"><i class="fa fa-arrow-left"></i></a></span>
-            <h>  Registration </h>
+            <h>  Registration<?php echo "{$firstname} {$lastname}"; ?> </h>
         </div>
 
         <div class="container">
@@ -141,7 +155,7 @@ include('../Controllers/signupcontroller.php');
 
                     if (data === "success") {
                         //    error.textContent=data;
-                        location.href = "identity.php";
+                        location.href = "pending.php";
                     } else {
                         error.textContent = data;
                         error.style.display = "block";

@@ -155,7 +155,11 @@
 
                           if($imgInstance->moveImage($dptemp, $dirfile)){
                             if($imgInstance->moveImage($id_img_temp, $id_dirfile)){
-                             
+                                if($registerInstance->updateImage( $dp, $id_img, $reasons, $sessionid )){
+                                    echo "success";
+                               }else{
+                                   echo "an error occurred while uploading the image";
+                               }
                                     
                                 }else{
                                     echo "identity image failed to move to directory";
