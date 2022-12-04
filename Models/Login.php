@@ -37,7 +37,7 @@ require '../Includes/db.inc.php';
                    'referralcodes'=>   $returned_row['referralcodes'],
                    'date' =>      $returned_row['reg_date'],
                    'password'=>   $returned_row['password'],
-                   'status'=>   $returned_row['Status']
+                   'Status'=>   $returned_row['Status']
                    ];
                    
              echo "password is correct";

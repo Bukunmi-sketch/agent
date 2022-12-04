@@ -41,7 +41,7 @@ $registered_date = $AgentInfo['date'];
     <main>
         <div class="newpostheader">
             <span onclick="history.back()"><i class="fa fa-arrow-left"></i></a></span>
-            <h>  Registration<?php echo "{$firstname} {$lastname} {$sessionid}"; ?> </h>
+            <h>  Upload Identity credentials </h>
         </div>
 
         <div class="container">
