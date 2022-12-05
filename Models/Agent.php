@@ -35,7 +35,8 @@ class Agent{
           'date' =>      $returned_row['reg_date'],
           'reg_status'=> $returned_row['reg_status'],
           'lastactivetime'=> $returned_row['LastActiveTime'],
-          'lastactivedate' => $returned_row['LastActiveDate']
+          'lastactivedate' => $returned_row['LastActiveDate'],
+          'Status'=>   $returned_row['Status']
           ];
     }catch(PDOException $e){
       echo $e->getMessage();
