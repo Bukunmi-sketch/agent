@@ -98,11 +98,12 @@ require '../Includes/db.inc.php';
           }
           
 
-          public function getPaymentStatus($status)
+          public function getPaymentStatus($status,$referral)
           {
-            $sql="SELECT * FROM orders WHERE payment_status=:status";
+            $sql="SELECT * FROM orders WHERE payment_status=:status AND referral=:referral ";
             $stmt=$this->db->prepare($sql);
             $stmt->bindParam(":status", $status);
+            $stmt->bindParam(":referral", $referral);
             $stmt->execute();
             return $stmt;
 

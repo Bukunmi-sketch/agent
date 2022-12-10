@@ -46,7 +46,7 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
 <html lang="en">
 
 <head>
-  <title>Customers Order</title>
+  <title>Referred Orders</title>
   <?php include '../Includes/metatags.php'; ?>
 
   <link rel="stylesheet" type="text/css" href="../Resources/css/left.css">
@@ -64,7 +64,6 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
       <?php
       include './components/left.php';
 
-      //    $sort=$_POST['sortorders'];
 
       $pagesql = "SELECT * FROM orders WHERE referral=:referral ORDER BY id ASC" ;
       $statement = $conn->prepare($pagesql);
@@ -86,7 +85,6 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
             <table id="example">
               <thead>
                 <tr>
-                  <th> Action </th>
                   <th> Order id</th>
                   <th>Customer Name</th>
                   <th>Customers Phone No</th>
@@ -110,11 +108,6 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
                 <?php foreach ($orderData as $orders) : ?>
                   <div>
                     <tr class="trr" id="eachorder<?php echo  "{$orders['order_id']}"; ?>">
-                      <form action="" class="order-modify">
-                        <td>
-                          <!--<button class="editbtn">Edit</button>--> <button data-identity="<?php echo  "{$orders['order_id']}"; ?>" class="deletebtn">Delete</button>
-                        </td>
-                      </form>
                       <td> <?php echo  "{$orders['order_id']}"; ?> </td>
                       <td> <?php echo  "{$orders['customers_firstname']} {$orders['customers_lastname']}"; ?> </td>
                       <td> <?php echo  "{$orders['phone_no']}"; ?> </td>
@@ -137,29 +130,6 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
                 <?php endforeach ?>
               </tbody>
             </table>
-          </div>
-          <div class="next-prev">
-            <div class="move-button">
-              <?php if ($page >= 2) : ?>
-                <a href='orders.php?page=<?php echo ($page - 1); ?>'> Prev </a>
-              <?php endif ?>
-
-              <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                <?php if ($i == $page) : ?>
-                  <a href="orders.php?page=<?php echo $i; ?>" class="active"> <?php echo $i; ?> </a>
-                <?php else : ?>
-                  <a href="orders.php?page=<?php echo $i; ?>"> <?php echo $i; ?> </a>
-                <?php endif ?>
-              <?php endfor ?>
-
-              <?php if ($page < $totalPages) : ?>
-                <a href='orders.php?page=<?php echo ($page + 1); ?>'> Next </a>
-              <?php endif ?>
-            </div>
-            <div class="inline">
-              <input id="page" type="number" min="1" max="<?php echo $totalPages ?>" placeholder="<?php echo $page . "/" . $totalPages; ?>" required>
-              <button onClick="go2Page();">Go</button>
-            </div>
           </div>
 
         <?php else : ?>

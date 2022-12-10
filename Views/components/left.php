@@ -158,17 +158,12 @@
 
 
 <!---------------------------------------------------------- CONTACT CUSTOMERS ------------------------------------------------------->                 
-        <a href="javascript:void(0)" onclick="exams()" class="menu-item">
+        <a href="commission.php" class="menu-item">
             <span> <i class="fa fa-money" aria-hidden="true"></i> </span>
             <h3> Your Commission </h3>
         </a>
    
-        <div id="exams" class="dropdown-exams">
-           <a href="send-email.php" class="menu-item"> <h3>Send E-mail</h3> </a>
-           <a href="send-textmsg.php" class="menu-item"> <h3>Call Customers</h3> </a>
-           <a href="send-textmsg.php" class="menu-item"> <h3>Send Text-Message</h3> </a>
-         </div>
-
+       
         
 <!---------------------------------------------------------- EDIT ADMIN ACCOUNT ------------------------------------------------------->     
         <a href="adminedit.php" class="menu-item">
