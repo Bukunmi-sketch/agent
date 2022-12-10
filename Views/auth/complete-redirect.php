@@ -10,7 +10,7 @@ $registered_date=$AgentInfo['date'];
 $reg_status=$AgentInfo['reg_status'];
 $status=$AgentInfo['Status'];
 
-
+/*
   if( $reg_status =="incomplete") {
     $authInstance->redirect("step2.php");
   }
@@ -22,5 +22,5 @@ $status=$AgentInfo['Status'];
   if( $status == "pending") {
     $authInstance->redirect("pending.php");
   }
-
+*/
 ?>

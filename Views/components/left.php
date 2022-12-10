@@ -25,21 +25,8 @@
 
         
         <a href="dashboard.php"  class="menu-item">
+           <span> <i class="fa fa-home" aria-hidden="true"></i> </span>
             <h3>Dashboard</h3>
-        </a>
-
-        <a href="allproducts.php" class="menu-item active">
-            <h3> Referals</h3>
-        </a>
-
-        <a href="create.php"  class="menu-item">
-            <h3>View Refferal Orders </h3>
-        </a>
-
-
-
-         <a href="categories.php"  class="menu-item">
-            <h3>Manage Your Accounts</h3>
         </a>
       
         <?php 
@@ -48,11 +35,13 @@
          ?>
                               <!--IF THERE IS NO NOTIFICATION-->
         <a href="orders.php" class="menu-item" id="message-notifications">
-            <h3>Orders</h3>
+             <span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+            <h3>All referred Orders</h3>
         </a>
         <?php else: ?>
          <!--IF THERE IS NOTIFICATION-->
          <a href="orders.php?read=true" class="menu-item" id="message-notifications">
+         <span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
              <h3>Orders</h3>
              <span><small class="notification-count"><?php echo $countnotify ?></small></span>
          </a>                        
@@ -61,7 +50,8 @@
 
 
         <a href="javascript:void(0)" class="menu-item" onclick="attend()">
-            <h3>Manage customer orders</h3>
+        <span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+            <h3> referred orders Type</h3>
         </a>
 
 
@@ -77,11 +67,12 @@
                 if($countundelivered == 0 ):
             ?>
          <a href="javascript:void(0)" onclick="members()" class="menu-item">
-            <h3>Manage Complete Orders</h3>
+            <h3>View Complete Orders</h3>
         </a>
         <?php else: ?>
         <a href="javascript:void(0)" onclick="members()" class="menu-item">
-            <h3>Manage Complete Orders</h3>
+           <span> <i class="fa fa-check" aria-hidden="true"></i> </span>
+            <h3>View Complete Orders</h3>
             <span><small class="notification-count"><?php echo $countundelivered ?></small></span>
         </a>
          <?php endif ?> 
@@ -107,6 +98,7 @@
                 $countPayOnDelivery=$notifyInstance->countPaymentOnDelivery();
              ?>           
                 <a href="ondelivery.php" class="menu-item">
+                  <span> <i class="fa fa-motorcycle" aria-hidden="true"></i> </span>
                    <h3>Payment on Delivery</h3>
                    <span><small class="notification-count"><?php echo $countPayOnDelivery; ?></small></span>
                 </a>   
@@ -118,10 +110,12 @@
                 if($countPay == 0 ):
             ?>         
           <a href="javascript:void(0)" onclick="campreg()" class="menu-item">
-            <h3>Payment</h3>
+          <span> <i class="fa fa-cc-visa" aria-hidden="true"></i> </span>
+            <h3>Referred Payment Mode</h3>
           </a>
           <?php else: ?>  
           <a href="javascript:void(0)" onclick="campreg()" class="menu-item">
+
             <h3>Payment</h3>
                  <span><small class="notification-count"><?php echo $countPay ?></small></span>
               </a>   
@@ -165,7 +159,8 @@
 
 <!---------------------------------------------------------- CONTACT CUSTOMERS ------------------------------------------------------->                 
         <a href="javascript:void(0)" onclick="exams()" class="menu-item">
-            <h3>Contact Customers</h3>
+            <span> <i class="fa fa-money" aria-hidden="true"></i> </span>
+            <h3> Your Commission </h3>
         </a>
    
         <div id="exams" class="dropdown-exams">
@@ -174,31 +169,15 @@
            <a href="send-textmsg.php" class="menu-item"> <h3>Send Text-Message</h3> </a>
          </div>
 
-  <!--
-         <?php 
-          $countnotify=$notifyInstance->unreadNotifyReports();
-          if($countnotify == 0 ):
-         ?>
-        <a href="reports.php" class="menu-item" id="message-notifications">
-            <h3>Reports & Compliants</h3>
-        </a>
-        <?php else: ?>
-     
-         <a href="reports.php" class="menu-item" id="message-notifications">
-             <h3>Reports & Compliants</h3>
-             <span><small class="notification-count"><?php echo $countnotify ?></small></span>
-         </a>                        
-        <?php endif ?>                      
-          -->             
-
-
+        
 <!---------------------------------------------------------- EDIT ADMIN ACCOUNT ------------------------------------------------------->     
         <a href="adminedit.php" class="menu-item">
-       <!--    <span><i class="material-icons">settings</i></span> -->
-            <h3>Edit Admin Account</h3>
+            <span> <i class="fa fa-pencil" aria-hidden="true"></i> </span>
+            <h3>Edit Your Account</h3>
         </a>
 
         <a href="dashboard.php?logout=true" class="menu-item">
+          <span> <i class="fa fa-power-off" aria-hidden="true"></i> </span>
             <h3>Log out</h3>
         </a>
 

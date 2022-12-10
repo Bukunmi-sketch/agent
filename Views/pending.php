@@ -2,14 +2,14 @@
  session_start();
  ob_start();
  include '../Includes/inc.php'; 
-// include './auth/sign-redirect.php'; 
+ include './auth/sign-redirect.php'; 
 
  
     $sessionid=$_SESSION['id'];
       //used as a unique key to get all the users data after signup 
     $email= $_SESSION['email'];
-    include './auth/complete-redirect.php';
-
+   // include './auth/complete-redirect.php';
+   
 
   
 

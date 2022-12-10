@@ -7,12 +7,9 @@ include '../Includes/autoload.php';
 include './auth/redirect.php';
 
 $sessionid = $_SESSION['id'];
-$userInfo = $userInstance->getuserinfo($sessionid);
-$email = $userInfo['email'];
-$firstname = $userInfo['firstname'];
-$lastname = $userInfo['lastname'];
-$registered_date = $userInfo['date'];
+include './auth/complete-redirect.php';
 
+/*
 $orderInstance = new Order($conn);
 
 $sql = "SELECT * FROM orders";
@@ -37,7 +34,7 @@ if (!isset($_GET['page'])) {
 }
 //determine the sql LIMIT starting number for the results on the displaying page  
 $startFrom = ($page - 1) * $results_per_page;
-
+*/
 if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
   $notifyInstance->readNotification();
 }
@@ -69,8 +66,9 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
 
       //    $sort=$_POST['sortorders'];
 
-      $pagesql = "SELECT * FROM orders ORDER BY id ASC LIMIT " . $startFrom . ',' . $results_per_page;
+      $pagesql = "SELECT * FROM orders WHERE referral=:referral ORDER BY id ASC" ;
       $statement = $conn->prepare($pagesql);
+      $statement->bindParam(":referral", $referral);
       $statement->execute();
       $orderData = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -81,7 +79,7 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
       <div class="middle">
         <?php if ($statement->rowCount() > 0) : ?>
 
-          <h5>Note all orders are included here including unpaid,paid,unconfirmed ,delivered ,undeliverd orders </h5>
+          <h5> All orders referred by you are listed here </h5>
          
 
           <div class="table-container">
@@ -165,7 +163,7 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
           </div>
 
         <?php else : ?>
-          <h4>there are no orders available</h4>
+          <h4> You are yet to refer any customers ! visit the main page to make orders for customers</h4>
         <?php endif ?>
       </div>
 
