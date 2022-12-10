@@ -69,7 +69,7 @@
     <?php foreach($orderData as $orders): ?>
     <div >
     <tr class="trr" id="eachorder<?php echo  "{$orders['order_id']}" ; ?>">
-    <td> <?php echo  "{$orders['referal']}" ; ?> </td>  
+    <td> <?php echo  "{$orders['referral']}" ; ?> </td>  
       <td> <?php echo  "{$orders['order_id']}" ; ?> </td>
       <td> <?php echo  "{$orders['customers_firstname']} {$orders['customers_lastname']}" ; ?>  </td>
       <td> <?php echo  "{$orders['phone_no']}" ; ?> </td>
@@ -94,7 +94,11 @@
 </div>
 
     <?php else: ?>
-        <h4>No payment has been made for ony ordered item</h4>
+    <h4 style="font-family:'poppins', sans-serif; text-align:center; margin-top:300px; font-weight:lighter;">
+         <i class="fa fa-info-circle" aria-hidden="true"></i>
+            no result was returned!
+        </h4>
+       
     <?php endif ?>
         </div>
 

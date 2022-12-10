@@ -109,10 +109,11 @@ require '../Includes/db.inc.php';
 
           }
 
-          public function confirmedOrders($confirm){
-            $sql="SELECT * FROM orders WHERE payment_confirmation=:confirmed";
+          public function confirmedOrders($confirm ,$referral){
+            $sql="SELECT * FROM orders WHERE payment_confirmation=:confirmed AND referral=:referral";
             $stmt=$this->db->prepare($sql);
             $stmt->bindParam(":confirmed", $confirm);
+            $stmt->bindParam(":referral", $referral);
             $stmt->execute();
             return $stmt;
           

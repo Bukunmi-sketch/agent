@@ -70,7 +70,7 @@
     <?php foreach($orderData as $orders): ?>
     <div >
     <tr class="trr" id="eachorder<?php echo  "{$orders['order_id']}" ; ?>">  
-    <td> <?php echo  "{$orders['referal']}" ; ?> </td>
+    <td> <?php echo  "{$orders['referral']}" ; ?> </td>
       <td> <?php echo  "{$orders['order_id']}" ; ?> </td>
       <td><?php echo  "{$orders['customers_firstname']} {$orders['customers_lastname']}" ; ?>   </td>
       <td> <?php echo  "{$orders['phone_no']}" ; ?> </td>

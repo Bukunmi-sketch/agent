@@ -42,7 +42,7 @@
          <!--IF THERE IS NOTIFICATION-->
          <a href="orders.php?read=true" class="menu-item" id="message-notifications">
          <span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
-             <h3>Orders</h3>
+         <h3>All referred Orders</h3>
              <span><small class="notification-count"><?php echo $countnotify ?></small></span>
          </a>                        
         <?php endif ?>                      
@@ -50,16 +50,16 @@
 
 
         <a href="javascript:void(0)" class="menu-item" onclick="attend()">
-        <span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+        <span> <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> </span>
             <h3> referred orders Type</h3>
+            <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>
         </a>
 
 
         <div id="attendance"  class="dropdown-attendance">
-           <a href="paid.php" class="menu-item"> <h3>paid Orders</h3> </a>
+           <a href="paid.php" class="menu-item">  <h3>paid Orders</h3> </a>
            <a href="unpaid.php" class="menu-item"> <h3>UnPaid Orders</h3> </a>
            <a href="confirmed.php" class="menu-item"> <h3>confirmed orders</h3> </a>
-           <a href="trashorder.php" class="menu-item"> <h3>Trash orders</h3> </a>
          </div>
 
          <?php 
@@ -68,12 +68,14 @@
             ?>
          <a href="javascript:void(0)" onclick="members()" class="menu-item">
             <h3>View Complete Orders</h3>
+            <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>
         </a>
         <?php else: ?>
         <a href="javascript:void(0)" onclick="members()" class="menu-item">
            <span> <i class="fa fa-check" aria-hidden="true"></i> </span>
             <h3>View Complete Orders</h3>
             <span><small class="notification-count"><?php echo $countundelivered ?></small></span>
+            <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>
         </a>
          <?php endif ?> 
 
@@ -110,14 +112,15 @@
                 if($countPay == 0 ):
             ?>         
           <a href="javascript:void(0)" onclick="campreg()" class="menu-item">
-          <span> <i class="fa fa-cc-visa" aria-hidden="true"></i> </span>
+          <span> <i class="fa fa-money" aria-hidden="true"></i> </span>
             <h3>Referred Payment Mode</h3>
+            <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>
           </a>
           <?php else: ?>  
           <a href="javascript:void(0)" onclick="campreg()" class="menu-item">
-
             <h3>Payment</h3>
                  <span><small class="notification-count"><?php echo $countPay ?></small></span>
+                 <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>
               </a>   
         <?php endif ?> 
           
@@ -159,7 +162,7 @@
 
 <!---------------------------------------------------------- CONTACT CUSTOMERS ------------------------------------------------------->                 
         <a href="commission.php" class="menu-item">
-            <span> <i class="fa fa-money" aria-hidden="true"></i> </span>
+            <span> <i class="fa fa-percent" aria-hidden="true"></i> </span>
             <h3> Your Commission </h3>
         </a>
    
