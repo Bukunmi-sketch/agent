@@ -44,7 +44,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
         
         <div class="logobox">
           <div class="sub-logo">
-            <p class="logoo">Agent sign in...</p>
+             <img src="../Images/assets/AfrimamaLogo2.png" style="height: 30px; width: 30px;" alt="">
           </div>
         </div>
         
@@ -52,7 +52,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
           <form action="#">
              <div class="error"><p></p></div><br>
                 
-                <div class="email-details">
+                <div class="password-details">
+                  <label for="email">Agent Email</label>
                      <input type="email" name="email" placeholder="Email Address" autofocus required>
                 </div>
                 
@@ -60,13 +61,17 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
                     <span  id="show" onclick="check()">
                     <i class="fa fa-eye"></i>
                     </span>
+                    <label for="password"> Agent Password </label>
                     <input type="password" id="pass" name="password" placeholder="Password"     required autocomplete="off">
                 </div>
                 
-                <button class="submit" name="login">Log In</button>
+                <button class="submit" name="login">
+                  <img src='../Images/assets/afrilogo2.png' style=" width: 90px; height: 25px;  " />
+                  Log In
+                </button>
                 
                 <div class="forgetbox">   
-                    <a href="email-ver.php" class="forget">Forgot password?</a>
+                    <a href="#" class="forget">Forgot password?</a>
                 </div>
                 
                 <div class="before">

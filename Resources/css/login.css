@@ -11,6 +11,10 @@ html,body{
     
     position:relative;
     */
+   font-family: 'DM sans', sans-serif;
+   background: url('http://localhost/websites/agent/Images/assets/deliverer.png');
+   background-size: 50%;
+   
     }
     
     *{
@@ -38,7 +42,6 @@ html,body{
     font-weight:light;
     font-size:0.8em;
     margin:0 auto 0;
-    font-family:"lato",sans-serif;
     color:white;
     }
     
@@ -59,7 +62,6 @@ html,body{
     text-align:left;
     background-color:#f8f8f8;
     outline:none;
-    font-family:'mukta',sans-serif;
     font-weight:bold;
     }
     
@@ -71,30 +73,28 @@ html,body{
 
     label{
     margin:-15px 0 0 10px ;
-    font-size:0.9em;
-    
-    font-family:'ubuntu',sans-serif;
+    font-size:1em;
     font-weight:bold;
     letter-spacing:-0.4px;
     position:absolute;
-    
+    font-family:'DM sans',sans-serif;
+    color: #20B302;
     }
     .submit{
     width:100%;
-    margin:0 0 0 0;
     height:50px;
     padding:12px;
+    display: flex;
     border-radius:4px;
  /*   border:1px solid #0E6EB8;  */
-    border: 1px solid red;
+    border: 1px solid #20B302;
     font-size:1.1em;
     text-align:center;
  /*   background-color:#0E6EB8;  */
-    background-color: red;
+    background-color: #20B302;
     cursor:pointer;
-    font-family:'lato',sans-serif;
+    font-family:'poppins',sans-serif;
     font-weight:bold;
-    
     color:white;
     align-items: center;
     }
@@ -136,12 +136,10 @@ html,body{
     }
     
     .forgetbox{
-    border:1px solid white;
     margin:20px 0 0 0;
     }
     
     .forget {
-    font-family:'mukta',sans-serif;
     color:blue;
     font-weight:bold;
     align-items:center;
@@ -199,7 +197,6 @@ html,body{
     display:flex;
     flex-direction:column ;
     box-shadow:0 0 12px #cecece;
-    border:1px solid white;
     background-color:#fff;
     padding:0 0 50px 0;
     border-radius:10px;
@@ -221,12 +218,10 @@ html,body{
     }
     .email-details {
     margin:0px 0  0 0px;
-    border:1px solid white;
     width:100%;
     }
     .password-details {
-    margin:0px 0  0 0px;
-    border:1px solid white;
+    margin:20px 0  0 0px;
     width:100%;
     }
     
@@ -237,7 +232,7 @@ html,body{
     border:1px solid transparent;
     width:80%;
     height:50px;
-    font-family:"lato",sans-serif;
+   
     text-align:center;
     justify-content:center;   
     align-items: center;   
@@ -250,7 +245,6 @@ html,body{
     
     
     .sub-container .logoo{
-    font-family:"ubuntu",sans-serif;
     font-size:2em;
     font-weight:bold;
     margin:0 0 0 0;
@@ -259,7 +253,6 @@ html,body{
     
     .before{
     margin:20px 0 0 0px;
-    border:1px solid white; 
     }
     
     .or{
@@ -296,53 +289,7 @@ html,body{
     }
     
     
-    .lang{
-    display:flex;
-    }
     
-    
-    .languageb{
-    right:10px;
-    position:absolute;
-    }
-    
-    .languagea {
-    left:10px; 
-    position:absolute;
-    }
-    
-    .languagea span{
-    font-weight:bold;
-    color:grey;
-    font-size:1.2em;
-    }
-    .languageb ul li{
-    list-style-type :none; 
-    font-size:1.2em;
-    color:#4267B2;
-    }
-    
-    .languagea ul li{
-    list-style-type :none; 
-    font-size:1.2em;
-    color:#4267B2;
-    }
-    
-    .abt{
-    display:flex;
-    margin:70px 0 0 70px;
-    }
-    
-    .abt ul{
-    display:flex;
-    
-    }
-    
-    .abt ul li{
-    padding:10px 10px 10px 10px;
-    list-style-type :none;
-    color:grey;
-    }
     
     footer{
         font-size:0.8em;
@@ -369,11 +316,7 @@ html,body{
       position: relative;  
     }
     
-    @media screen and (max-width:500px){
-
-    body{
-        background:white;
-    }    
+    @media screen and (max-width:500px){  
 
     .container{
     border-top:1px solid #f2f2f2;
@@ -388,6 +331,7 @@ html,body{
     width: 100%;
     border-radius: 0;
     box-shadow:none;
+    background-color: unset;
     }
     
     .logobox{
