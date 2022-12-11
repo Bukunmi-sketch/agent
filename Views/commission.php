@@ -31,9 +31,6 @@
 
         <?php 
 
-    //    $sort=$_POST['sortorders'];
-         $stmt=$orderInstance->getPaymentStatus("paid",$referral);
-         $orderData=$stmt->fetchAll(PDO::FETCH_ASSOC);
         
         
         ?>
