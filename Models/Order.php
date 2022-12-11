@@ -119,19 +119,21 @@ require '../Includes/db.inc.php';
           
           }
 
-          public function orderStatus($status){
-            $sql="SELECT * FROM orders WHERE order_status=:status";
+          public function orderStatus($status ,$referral){
+            $sql="SELECT * FROM orders WHERE order_status=:status AND referral=:referral";
             $stmt=$this->db->prepare($sql);
             $stmt->bindParam(":status", $status);
+            $stmt->bindParam(":referral", $referral);
             $stmt->execute();
             return $stmt;
           
           }
 
-          public function paymentType($type){
-            $sql="SELECT * FROM orders WHERE payment_type=:type";
+          public function paymentType($type,$referral){
+            $sql="SELECT * FROM orders WHERE payment_type=:type AND referral=:referral";
             $stmt=$this->db->prepare($sql);
             $stmt->bindParam(":type", $type);
+            $stmt->bindParam(":referral", $referral);
             $stmt->execute();
             return $stmt;
           }

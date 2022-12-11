@@ -8,12 +8,13 @@
 
     $sessionid=$_SESSION['id'];   
     include './auth/complete-redirect.php';
+     
 ?>
 
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Delivered Orders</title>
+    <title>Paid Order</title>
     <?php include '../Includes/metatags.php' ; ?>
 
               <link rel="stylesheet" type="text/css" href="../Resources/css/left.css"> 
@@ -27,22 +28,27 @@
     <main>
         <div class="container">
           <?php  include './components/left.php' ; ?>
-          <?php 
-           $status="delivered";
-          $stmt=$orderInstance->orderStatus($status, $referral);
-          $orderData=$stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        <?php 
+
+    //    $sort=$_POST['sortorders'];
+         $stmt=$orderInstance->getPaymentStatus("paid",$referral);
+         $orderData=$stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        
         ?>
-   
+         
+        
         <div class="middle">
         <?php  if($stmt->rowCount() > 0 ): ?>
         
-        <h5>Note: only orders that has been delivered to the respective customers are marked has delivered,kindly mark orders that has been delivered </h5>
+        <h5>Note: only paid orders referrerd by you are included here, it certifies customers has paid for the product either through klump or flutterwave </h5>
+        
 
 <div class="table-container">
   <table>
     <tr>
-      <th> Referral </th>
+      <th> Referral</th>
       <th> Order id</th>
       <th>Customer Name</th>
       <th>Customers Phone No</th>
@@ -64,9 +70,9 @@
     <?php foreach($orderData as $orders): ?>
     <div >
     <tr class="trr" id="eachorder<?php echo  "{$orders['order_id']}" ; ?>">  
-    <td> <?php echo  "{$orders['referal']}" ; ?> </td> 
+    <td> <?php echo  "{$orders['referral']}" ; ?> </td>
       <td> <?php echo  "{$orders['order_id']}" ; ?> </td>
-      <td> <?php echo  "{$orders['customers_firstname']} {$orders['customers_lastname']}" ; ?>  </td>
+      <td><?php echo  "{$orders['customers_firstname']} {$orders['customers_lastname']}" ; ?>   </td>
       <td> <?php echo  "{$orders['phone_no']}" ; ?> </td>
       <td> <?php echo  "{$orders['cart_items']}" ; ?> </td>
       <td> <?php echo  "{$orders['email']}" ; ?> </td>
@@ -87,11 +93,11 @@
       <?php endforeach ?>
   </table>
 </div>
-  
+
     <?php else: ?>
         <h4 style="font-family:'poppins', sans-serif; text-align:center; margin-top:300px; font-weight:lighter;">
          <i class="fa fa-info-circle" aria-hidden="true"></i>
-         No order has been delivered  at the moment
+          No payment has been made for ony ordered item referred by you
         </h4>
     <?php endif ?>
         </div>

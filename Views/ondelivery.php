@@ -7,11 +7,7 @@ include '../Includes/autoload.php';
 include './auth/redirect.php';
 
 $sessionid = $_SESSION['id'];
-$userInfo = $userInstance->getuserinfo($sessionid);
-$email = $userInfo['email'];
-$firstname = $userInfo['firstname'];
-$lastname = $userInfo['lastname'];
-$registered_date = $userInfo['date'];
+include './auth/complete-redirect.php';
 
 if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
   $notifyInstance->readFlutterwaveNotification();
@@ -41,23 +37,8 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
       <?php include './components/left.php'; ?>
       <?php
       $type = "pay on delivery";
-      $stmt = $orderInstance->paymentType($type);
-      $number_of_result = $stmt->rowCount();
-      $results_per_page = 10;
-      $totalPages = ceil($number_of_result / $results_per_page);
-
-      if (!isset($_GET['page'])) {
-        $page = 1;
-      } else {
-        $page = $_GET['page'];
-      }
-
-      $startFrom = ($page - 1) * $results_per_page;
-
-      $sql = "SELECT * FROM orders WHERE payment_type=:type ORDER BY id ASC LIMIT " . $startFrom . ',' . $results_per_page;
-      $stmt = $conn->prepare($sql);
-      $stmt->bindParam(":type", $type);
-      $stmt->execute();
+      $stmt = $orderInstance->paymentType($type,$referral );
+       
       $orderData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       ?>
@@ -66,21 +47,12 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
         <?php if ($stmt->rowCount() > 0) : ?>
 
           <h5>Note: Order paid through flutterwave are listed here</h5>
-          <form action="paid.php"></form>
-          <div class="inputbox-details">
-            <label for="sortorders"> Sort orders by old or latest</label>
-            <select name="sortorders">
-              <option value="ASC">Old</option>
-              <option value="DESC">Latest</option>
-            </select>
-            </form>
-          </div>
 
           <div class="table-container">
             <table  id="example">
             <thead>
               <tr>
-                <th> Action </th>
+                <th> Referral </th>
                 <th> Order id</th>
                 <th>Customer Name</th>
                 <th>Customers Phone No</th>
@@ -104,11 +76,7 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
               <?php foreach ($orderData as $orders) : ?>
                 <div>
                   <tr class="trr" id="eachorder<?php echo  "{$orders['order_id']}"; ?>">
-                    <form action="" class="order-modify">
-                      <td>
-                        <!--<button class="editbtn">Edit</button>--> <button data-identity="<?php echo  "{$orders['order_id']}"; ?>" class="deletebtn">Delete</button>
-                      </td>
-                    </form>
+                    <td> <?php echo  "{$orders['referral']}" ; ?> </td>
                     <td> <?php echo  "{$orders['order_id']}"; ?> </td>
                     <td> <?php echo  "{$orders['customers_firstname']} {$orders['customers_lastname']}"; ?> </td>
                     <td> <?php echo  "{$orders['phone_no']}"; ?> </td>
@@ -132,32 +100,13 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
     </tbody>
             </table>
           </div>
-          <div class="next-prev">
-            <div class="move-button">
-              <?php if ($page >= 2) : ?>
-                <a href='ondelivery.php?page=<?php echo ($page - 1); ?>'> Prev </a>
-              <?php endif ?>
-
-              <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
-                <?php if ($i == $page) : ?>
-                  <a href="ondelivery.php?page=<?php echo $i; ?>" class="active"> <?php echo $i; ?> </a>
-                <?php else : ?>
-                  <a href="ondelivery.php?page=<?php echo $i; ?>"> <?php echo $i; ?> </a>
-                <?php endif ?>
-              <?php endfor ?>
-
-              <?php if ($page < $totalPages) : ?>
-                <a href='ondelivery.php?page=<?php echo ($page + 1); ?>'> Next </a>
-              <?php endif ?>
-            </div>
-            <div class="inline">
-              <input id="page" type="number" min="1" max="<?php echo $totalPages ?>" placeholder="<?php echo $page . "/" . $totalPages; ?>" required>
-              <button onClick="go2Page();">Go</button>
-            </div>
-          </div>
+          
 
         <?php else : ?>
-          <h4>No request for Pay on Delivery payment type at the moment</h4>
+          <h4 style="font-family:'poppins', sans-serif; text-align:center; margin-top:300px; font-weight:lighter;">
+         <i class="fa fa-info-circle" aria-hidden="true"></i>
+           No request for Pay on Delivery payment type at the moment
+        </h4>
         <?php endif ?>
       </div>
 

@@ -133,8 +133,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == true) {
         
       	      	let data=xhr.responseText;
       	     	if(data == "success"){
-      				location.href="allproducts.php";
-           // window.history.pushState('',"homeee","home.php");
+      				location.href="dashboard.php";
      	       	 }
          	 	else{
             	 error.textContent=data;

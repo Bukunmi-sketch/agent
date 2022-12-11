@@ -174,7 +174,7 @@
             <h3>Edit Your Account</h3>
         </a>
 
-        <a href="dashboard.php?logout=true" class="menu-item">
+        <a href="dashboard.php?logout=disconnect" class="menu-item">
           <span> <i class="fa fa-power-off" aria-hidden="true"></i> </span>
             <h3>Log out</h3>
         </a>
