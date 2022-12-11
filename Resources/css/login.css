@@ -11,7 +11,7 @@ html,body{
     
     position:relative;
     */
-   font-family: 'DM sans', sans-serif;
+   font-family: 'poppins', sans-serif;
    background: url('http://localhost/websites/agent/Images/assets/deliverer.png');
    background-size: 50%;
    
@@ -51,7 +51,7 @@ html,body{
     
     input[type=email],input[type=password],input[type=text], select{
     width:100%;
-    margin:5px 0 15px;
+    margin:15px 0 15px;
     height:50px;
     padding:8px;
     box-sizing:border-box;
@@ -72,12 +72,11 @@ html,body{
     }
 
     label{
-    margin:-15px 0 0 10px ;
+    margin:-15px 0 20px 10px ;
     font-size:1em;
     font-weight:bold;
-    letter-spacing:-0.4px;
     position:absolute;
-    font-family:'DM sans',sans-serif;
+    font-family:'poppins',sans-serif;
     color: #20B302;
     }
     .submit{
@@ -331,7 +330,6 @@ html,body{
     width: 100%;
     border-radius: 0;
     box-shadow:none;
-    background-color: unset;
     }
     
     .logobox{

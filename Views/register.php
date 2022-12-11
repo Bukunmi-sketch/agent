@@ -26,8 +26,12 @@ include('../Controllers/signupcontroller.php');
    </div>
    <main>
       <div class="newpostheader">
-         <span onclick="history.back()"><i class="fa fa-arrow-left"></i></a></span>
-         <h> Agent Registration </h>
+     
+          <div class="sub-logo">
+             <img src="../Images/assets/afrilogo2.png" style="height: 30px; width: 100px;" alt="">
+          </div>
+
+         <h style=" color: #20B302;"> Agent Registration </h>
       </div>
 
       <div class="container">
@@ -37,11 +41,6 @@ include('../Controllers/signupcontroller.php');
 
 
          <div class="sub-container">
-
-            <div class="middle-heading">
-               <h3>Agent Registration</h3>
-            </div>
-
 
             <div class="login-details">
                <form action="#">
@@ -72,7 +71,7 @@ include('../Controllers/signupcontroller.php');
                            <?php
                            $states = ["Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "FCT - Abuja", "Gombe", "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe", "Zamfara"]
                            ?>
-                           <select name="state">
+                           <select name="state" >
                               <?php foreach ($states as $state) : ?>
                                  <option value="<?php echo $state; ?> "><?php echo $state; ?> </option>
                               <?php endforeach ?>
@@ -122,7 +121,8 @@ include('../Controllers/signupcontroller.php');
 
 </body>
 <script src="../Resources/js/loader.js"></script>
-<script src="../Resources/js/validatephone.js"></script>
+<!--
+<script src="../Resources/js/validatephone.js"></script> -->
 <script type="text/javascript">
    //const form=document.querySelector("");
 

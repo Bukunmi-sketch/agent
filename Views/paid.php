@@ -95,7 +95,7 @@
 </div>
 
     <?php else: ?>
-        <h4 style="font-family:'poppins', sans-serif; text-align:center; margin-top:300px; font-weight:lighter;">
+        <h4 style="font-family:'poppins', sans-serif; text-align:center; margin-top:300px; font-weight:500;">
          <i class="fa fa-info-circle" aria-hidden="true"></i>
           No payment has been made for ony ordered item referred by you
         </h4>

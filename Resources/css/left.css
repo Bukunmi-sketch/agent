@@ -72,9 +72,13 @@ main .container .left .image-removebox{
 
 .left .sidebar i{
     font-size: 1.4rem;
-    color: var(--color-black);
+    
     margin-left: 2rem;
     position:relative;
+}
+
+.menu-item span i{
+    color: #20B302;
 }
 
 .left .sidebar .notification-count{
