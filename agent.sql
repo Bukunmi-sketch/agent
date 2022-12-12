@@ -11,14 +11,18 @@ CREATE TABLE IF NOT EXISTS `agents` (
   `lastname` varchar(255) NOT NULL,
   `LastActivity` int(55) NOT NULL,
   `email` varchar(255) NOT NULL UNIQUE,
- -- `display_pic`  blob NOT NULL,
- -- `identity_pic`  blob NOT NULL ,
+  `Mobile` bigint(15) NOT NULL,
+  `display_pic`  blob NOT NULL,
+  `identity_pic`  blob NOT NULL ,
   `referralcodes` varchar(255) NOT NULL UNIQUE,
+  `reason` varchar(255) NOT NULL,
   `LastActiveDate` varchar(255) NOT NULL,
   `LastActiveTime` varchar(255) NOT NULL,
   `DateLastActivity` date NOT NULL,
   `Status` varchar(255) NOT NULL,
-  `Country` varchar(255) NOT NULL,
+  `reg_status` varchar(255) NOT NULL,
+  `new_agent` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
   `ip_address` double(11,2) NOT NULL,
   `browser_type` varchar(255) NOT NULL,
   `forgetid` int(55) NOT NULL,
@@ -26,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `agents` (
   `forget_answer` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `reg_date` varchar(255) NOT NULL,
-  `Mobile` bigint(15) NOT NULL,
+  
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -41,12 +45,12 @@ CREATE TABLE IF NOT EXISTS `agent_password_reset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-  ALTER TABLE `agents`
+ -- ALTER TABLE `agents`
 
  -- ADD `display_pic`  blob NOT NULL AFTER `email`,
  -- ADD `identity_pic`  blob NOT NULL AFTER `lastname` ;
-  ADD `reason` VARCHAR(255) NOT NULL AFTER `referralcodes`,
-  ADD `new_agent` VARCHAR(255) NOT NULL AFTER `reg_status`;
+ -- ADD `reason` VARCHAR(255) NOT NULL AFTER `referralcodes`,
+ -- ADD `new_agent` VARCHAR(255) NOT NULL AFTER `reg_status`;
 -- CHANGE `referralcodes` `referralcodes` varchar(255);
 -- ALTER TABLE `reports`
 -- ADD `notify_status` varchar(255) NOT NULL;
