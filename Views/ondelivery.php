@@ -9,10 +9,6 @@ include './auth/redirect.php';
 $sessionid = $_SESSION['id'];
 include './auth/complete-redirect.php';
 
-if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
-  $notifyInstance->readFlutterwaveNotification();
-}
-
 ?>
 
 <!doctype html>
