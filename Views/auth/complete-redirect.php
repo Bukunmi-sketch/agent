@@ -19,7 +19,7 @@ $status=$AgentInfo['Status'];
     $authInstance->redirect("step2.php");
   }
 
-  if( $status == "pending" || $reg_status =="complete" ) {
+  if( $status == "pending" ) {
     $authInstance->redirect("pending.php");
   }
 
