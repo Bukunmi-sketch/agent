@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `agents` (
   `email` varchar(255) NOT NULL UNIQUE,
   `Mobile` bigint(15) NOT NULL,
   `display_pic`  blob NOT NULL,
-  `identity_pic`  blob NOT NULL ,
+  `identity_pic`  blob NOT NULL,
   `referralcodes` varchar(255) NOT NULL UNIQUE,
   `reason` varchar(255) NOT NULL,
   `LastActiveDate` varchar(255) NOT NULL,
