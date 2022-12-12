@@ -98,11 +98,12 @@ require '../Includes/db.inc.php';
       $stmt->execute();
     }    
 
-    public function countPaymentOnDelivery(){
-      $query="SELECT * FROM orders WHERE  payment_type=:status ";
+    public function countPaymentOnDelivery($referral){
+      $query="SELECT * FROM orders WHERE  payment_type=:status AND referral=:referral";
       $status="pay on delivery";
       $prepnotify=$this->db->prepare($query);
       $prepnotify->bindParam(':status',$status );
+      $prepnotify->bindParam(":referral", $referral);
       $prepnotify->execute();
       return $prepnotify->rowCount();
     }  

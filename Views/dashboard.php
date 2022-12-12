@@ -13,6 +13,8 @@
     $registered_date=$agentInfo['date'];
     $referral=$agentInfo['referralcodes'];
     $reg_status=$agentInfo['reg_status'];
+
+    //include './auth/complete-redirect.php';
    
 
    
@@ -56,7 +58,7 @@
             <h3>DASHBOARD OVERVIEW</h3>
            <div class="middle-content">
 
-          
+          UNDER CONSTRUCTION !
                       </div>
 </div>
 

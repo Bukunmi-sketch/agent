@@ -63,10 +63,11 @@
          </div>
 
          <?php 
-                $countundelivered=$orderInstance->countUndeliveredOrders();
+                $countundelivered=$orderInstance->countUndeliveredOrders($referral);
                 if($countundelivered == 0 ):
             ?>
          <a href="javascript:void(0)" onclick="members()" class="menu-item">
+         <span> <i class="fa fa-check" aria-hidden="true"></i> </span>
             <h3>View Complete Orders</h3>
             <span> <i class="fa fa-caret-down" aria-hidden="true"></i> </span>
         </a>
@@ -82,22 +83,28 @@
 
         <div id="members"  class="dropdown-members">
             <?php 
-                $countundelivered=$orderInstance->countUndeliveredOrders();
+                $countundelivered=$orderInstance->countUndeliveredOrders($referral);
                 if($countundelivered == 0 ):
             ?>
-               <a href="undelivered.php" class="menu-item"> <h3>Undelivered Orders</h3> </a>
+               <a href="undelivered.php" class="menu-item">
+                   <span> <i class="fa fa-chain-broken" aria-hidden="true"></i> </span>
+                   <h3>Undelivered Orders</h3> 
+               </a>
          <?php else: ?>
               <a href="undelivered.php" class="menu-item" id="message-notifications">
                  <h3>Undelivered Orders</h3>
                  <span><small class="notification-count"><?php echo $countundelivered ?></small></span>
               </a>   
          <?php endif ?> 
-
-           <a href="delivered.php" class="menu-item"> <h3>Delivered Orders</h3> </a>   
+           
+           <a href="delivered.php" class="menu-item">
+           <span> <i class="fa fa-check-circle-o" aria-hidden="true"></i> </span>
+              <h3>Delivered Orders</h3>
+             </a>   
          </div>
 
          <?php 
-                $countPayOnDelivery=$notifyInstance->countPaymentOnDelivery();
+                $countPayOnDelivery=$notifyInstance->countPaymentOnDelivery($referral);
              ?>           
                 <a href="ondelivery.php" class="menu-item">
                   <span> <i class="fa fa-motorcycle" aria-hidden="true"></i> </span>
@@ -169,7 +176,7 @@
        
         
 <!---------------------------------------------------------- EDIT ADMIN ACCOUNT ------------------------------------------------------->     
-        <a href="adminedit.php" class="menu-item">
+        <a href="edit.php" class="menu-item">
             <span> <i class="fa fa-pencil" aria-hidden="true"></i> </span>
             <h3>Edit Your Account</h3>
         </a>

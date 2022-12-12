@@ -138,11 +138,12 @@ require '../Includes/db.inc.php';
             return $stmt;
           }
 
-          public function countUndeliveredOrders(){
-            $query="SELECT * FROM orders WHERE  order_status=:status ";
+          public function countUndeliveredOrders($referral){
+            $query="SELECT * FROM orders WHERE  order_status=:status AND referral=:referral";
             $status="undelivered";
             $prepnotify=$this->db->prepare($query);
             $prepnotify->bindParam(':status',$status );
+            $prepnotify->bindParam(":referral", $referral);
             $prepnotify->execute();
             return $prepnotify->rowCount();
           }      
