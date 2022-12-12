@@ -30,7 +30,7 @@
         </a>
       
         <?php 
-          $countnotify=$notifyInstance->unreadNotificationOrders();
+          $countnotify=$notifyInstance->unreadNotificationOrders($referral);
           if($countnotify == 0 ):
          ?>
                               <!--IF THERE IS NO NOTIFICATION-->
@@ -115,7 +115,7 @@
 
 <!----------------------------------------------------------PAYMENT  ------------------------------------------------------->
 <?php 
-                $countPay=$notifyInstance->countNewPayment();
+                $countPay=$notifyInstance->countNewPayment($referral);
                 if($countPay == 0 ):
             ?>         
           <a href="javascript:void(0)" onclick="campreg()" class="menu-item">
@@ -136,7 +136,7 @@
         <div id="campreg" class="dropdown-campreg">
       <!-------------------------------klump payment-------------------------------------> 
         <?php 
-                $countKlumpPay=$notifyInstance->countNewKlumpPayment();
+                $countKlumpPay=$notifyInstance->countNewKlumpPayment($referral);
                 if($countKlumpPay == 0 ):
             ?>
            <a href="klump.php" class="menu-item"> <h3>Klump payment</h3> </a>
@@ -150,7 +150,7 @@
               <!------------------------------flutterwave payment-------------------------------------> 
 
               <?php 
-                $countFlutterwavePay=$notifyInstance->countNewFlutterwavePayment();
+                $countFlutterwavePay=$notifyInstance->countNewFlutterwavePayment($referral);
                 if($countFlutterwavePay == 0 ):
              ?>
               <a href="flutterwave.php" class="menu-item"> <h3>Flutterwave payment</h3> </a>
