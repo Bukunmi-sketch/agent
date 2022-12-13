@@ -8,18 +8,20 @@
   $servername = "localhost";
   */
  
- /*
+
    $servername="afrimamafarms.com";
    $dbname="afrimama_afrimama";
    $username="afrimama_mama_afri";
    $password="afrimummy2022";
-   */
- 
+  
+
+    /*
   $servername="localhost";
    $username="root";
    $password="";
    $dbname="afrimama"; 
-  
+   */
+ 
    
   
 
