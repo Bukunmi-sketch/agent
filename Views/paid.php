@@ -14,7 +14,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Paid Order</title>
+    <title> Referred Paid Order</title>
     <?php include '../Includes/metatags.php' ; ?>
 
               <link rel="stylesheet" type="text/css" href="../Resources/css/left.css"> 
