@@ -100,6 +100,58 @@ require '../Includes/db.inc.php';
             }
         }
 
+
+        public function phoneNolength($phoneno)
+        {
+            if (strlen($phoneno) < 11 || strlen($phoneno) > 11) {
+                // echo "phoneno is too short or to long";
+                return false;
+            } else {
+                //  echo "phoneno is appropriate";
+                return true;
+            }
+        }
+    
+        public function createOTP($userid, $otp)
+      {
+        $sql = "UPDATE user SET otp=:otp WHERE id=:userid";
+        $stmtupdate = $this->db->prepare($sql);
+        $stmtupdate->bindParam(":userid", $userid);
+        $stmtupdate->bindParam(":otp", $otp);
+        if ($stmtupdate->execute()) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    
+    
+        //authenticate otp
+        public function authOTP($sessionid, $otp)
+        {
+            try {
+                $sql = "SELECT * FROM users WHERE id =:userid";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':userid', $sessionid);
+                $stmt->execute();
+                // Check if row is actually returned
+                if ($stmt->rowCount() > 0) {
+                    //Return row as an array indexed by both column name
+                    $returned_row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    // Verify hashed otp against entered otp
+                    if ($otp == $returned_row['otp']) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            } catch (PDOException $e) {
+                echo  $e->getMessage();
+            }
+        }  //otp
+
         
                   //authenticate password
         public function authPassword($sessionid,$password){
@@ -132,12 +184,3 @@ require '../Includes/db.inc.php';
       
     
     }
-    
-    
-
-
-   
-
-
-
-?>
