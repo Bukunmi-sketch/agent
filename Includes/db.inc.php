@@ -1,26 +1,18 @@
 <?php
-
-/*
-  $servername="fdb26.awardspace.net";
-   $username="3320362_hmm";
-   $password="Computer19";
-   $dbname="3320362_hmm";
-  $servername = "localhost";
-  */
  
-
+ /*
    $servername="afrimamafarms.com";
    $dbname="afrimama_afrimama";
    $username="afrimama_mama_afri";
    $password="afrimummy2022";
-  
+    */
 
-    /*
+   
   $servername="localhost";
    $username="root";
    $password="";
    $dbname="afrimama"; 
-   */
+ 
  
    
   
