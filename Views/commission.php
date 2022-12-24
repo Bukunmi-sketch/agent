@@ -79,6 +79,12 @@
   <td> <?php echo  "{$orders['email']}" ; ?> </td>
   <td> <?php echo  "{$orders['amount']}" ; ?> </td>
   <td> <?php echo  "{$orders['commission']}" ; ?> </td>
+  <td>  
+   <?php
+       $orders['comm']
+   ?>
+
+  </td>
 </tr>
 </div>
   <?php endforeach ?>
