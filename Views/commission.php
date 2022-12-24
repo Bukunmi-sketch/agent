@@ -62,6 +62,7 @@
   <th>Customer Name</th>
   <th>Customers Phone No</th>
   <th> Ordered item </th>
+  <th> Customers Email </th>
   <th>Customers Phone No</th>
   <th>Amount Paid</th>
 </tr>
