@@ -61,7 +61,7 @@
   <th> Order id</th>
   <th>Customer Name</th>
   <th>Customers Phone No</th>
-  <th>Cust</th>
+  <th>Amount Paid</th>
 </tr>
 <?php foreach($orderData as $orders): ?>
 <div >
