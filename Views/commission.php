@@ -78,7 +78,7 @@
   <td> <?php echo  "{$orders['cart_items']}" ; ?> </td>
   <td> <?php echo  "{$orders['email']}" ; ?> </td>
   <td> <?php echo  "{$orders['amount']}" ; ?> </td>
- 
+  <td> <?php echo  "{$orders['commission']}" ; ?> </td>
 </tr>
 </div>
   <?php endforeach ?>
