@@ -65,6 +65,8 @@
   <th> Customers Email </th>
   <th>Customers Phone No</th>
   <th>Amount Paid</th>
+  <th>Item Commission %</th>\
+  <th>Commission Amount </th>
 </tr>
 <?php foreach($orderData as $orders): ?>
 <div >
