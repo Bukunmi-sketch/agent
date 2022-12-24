@@ -81,7 +81,7 @@
   <td> <?php echo  "{$orders['commission']}" ; ?> </td>
   <td>  
    <?php
-       $orders['comm']
+       $orders['commissionn']/100 * $orders['amount'];
    ?>
 
   </td>
