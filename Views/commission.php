@@ -61,6 +61,7 @@
   <th> Order id</th>
   <th>Customer Name</th>
   <th>Customers Phone No</th>
+  <th>Cust</th>
 </tr>
 <?php foreach($orderData as $orders): ?>
 <div >
@@ -71,6 +72,7 @@
   <td> <?php echo  "{$orders['phone_no']}" ; ?> </td>
   <td> <?php echo  "{$orders['cart_items']}" ; ?> </td>
   <td> <?php echo  "{$orders['email']}" ; ?> </td>
+  <td> <?php echo  "{$orders['amount']}" ; ?> </td>
  
 </tr>
 </div>
