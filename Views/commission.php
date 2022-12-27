@@ -88,6 +88,9 @@
 </tr>
 </div>
   <?php endforeach ?>
+  <tr>
+    <td></td>
+  </tr>
 </table>
 </div>
 
