@@ -89,7 +89,7 @@
 </div>
   <?php endforeach ?>
   <tr>
-    <td></td>
+    <td>SUM TOTAL</td>
   </tr>
 </table>
 </div>
