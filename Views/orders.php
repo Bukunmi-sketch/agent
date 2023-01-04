@@ -36,7 +36,7 @@ if (!isset($_GET['page'])) {
 $startFrom = ($page - 1) * $results_per_page;
 */
 if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
-  $notifyInstance->readNotification();
+  $notifyInstance->readNotification($referral);
 }
 
 
@@ -65,7 +65,7 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
       include './components/left.php';
 
 
-      $pagesql = "SELECT * FROM orders WHERE referral=:referral ORDER BY id ASC" ;
+      $pagesql = "SELECT * FROM orders INNER WHERE referral=:referral ORDER BY id ASC" ;
       $statement = $conn->prepare($pagesql);
       $statement->bindParam(":referral", $referral);
       $statement->execute();
@@ -91,6 +91,8 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
                   <th>Customers Request item</th>
                   <th>Customers Email</th>
                   <th>Amount Paid</th>
+                  <th>Commission %</th>
+                  <th>Commission amount</th>
                   <th>Customers State</th>
                   <th>Local Gov</th>
                   <th>Customers Address</th>
@@ -114,6 +116,8 @@ if (isset($_GET['read']) && ($_GET['read'] == 'true')) {
                       <td> <?php echo  "{$orders['cart_items']}"; ?> </td>
                       <td> <?php echo  "{$orders['email']}"; ?> </td>
                       <td> <?php echo  "{$orders['amount']}"; ?> </td>
+                      <td> <?php echo  "{$orders['agent_commission_fee']}"; ?> </td>
+                      <td> <?php echo  "{$orders['agent_commission_fee']}"; ?> </td>
                       <td> <?php echo  "{$orders['state']}"; ?> </td>
                       <td> <?php echo  "{$orders['customers_lga']}"; ?> </td>
                       <td> <?php echo  "{$orders['customers_address']}"; ?> </td>
